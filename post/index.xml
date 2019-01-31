@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Андрей Палтусов</title>
+    <link>http://paltusov.pro/post/</link>
+    <description>Recent content in Posts on Андрей Палтусов</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 26 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://paltusov.pro/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Авансовый отчет на PowerApps и Dynamics 365 Customer Engagement</title>
+      <link>http://paltusov.pro/2019/01/26/powerapps-expense-report/</link>
+      <pubDate>Sat, 26 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://paltusov.pro/2019/01/26/powerapps-expense-report/</guid>
+      <description>Предисловие &amp;nbsp; &amp;nbsp;В этой статье хотелось бы поделиться опытом применения PowerApps совместно с Dynamics 365 Customer Engagement (CRM) в компании AWARA-IT. В нашей компании всегда приветствуется проявление инициативы по новым, интересным направлениям в сфере IT. PowerApps на мой взгляд является одним из таких. Так же достаточно насущно стоит вопрос оперативности и простоты заполнения авансовых отчетов сотрудниками, которые часто ездят в командировки.
+&amp;nbsp; &amp;nbsp; Начнем с того что такое PowerApps? Это инструмент для создания бизнес-приложений для веба и мобильных платформ.</description>
+    </item>
+    
+  </channel>
+</rss>

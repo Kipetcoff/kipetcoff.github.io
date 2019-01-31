@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><head>
+    <meta name="google-site-verification" content="9vIieCe-Qpd78QOmBl63rGtIVbhY6sYyuxX3j8XWBA4" />
+    <meta name="baidu-site-verification" content="LRrmH41lz7" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="description" content="Авансовый отчет на PowerApps и Dynamics 365 Customer Engagement">
+    
+    <meta name="keyword"  content="Kipetcoff, Dynamics CRM, SharePoint, Dynamics 365, Paltusov, Палтусов">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Авансовый отчет на PowerApps и Dynamics 365 Customer Engagement-Андрей Палтусов | Andrey Paltusov Blog | Kipetcoff</title>
+
+    <link rel="canonical" href="/2019/01/26/powerapps-expense-report/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+	
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/docco.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+</head>
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Андрей Палтусов</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Главная</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/it">IT</a>
+                    </li>
+                    
+                    
+		    
+                        <li><a href="/top/about/">Обо мне</a></li>
+                    
+                        <li><a href="/top/contacts/">Контакты</a></li>
+                    
+
+                    
+		    <li>
+                        <a href="/search">Поиск <img src="/img/search.png" height="15" style="cursor: pointer;"></a>
+		    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/karelia1.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/powerapps" title="PowerApps">
+                            PowerApps
+                        </a>
+                        
+                    </div>
+                    <h1>Авансовый отчет на PowerApps и Dynamics 365 Customer Engagement</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+			Posted by 
+			
+			        &#34;Andrey Paltusov&#34;
+			 
+			on 
+			Saturday, January 26, 2019
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>Оглавление</h2>
+                </header>
+                <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#предисловие">Предисловие</a></li>
+<li><a href="#авансовые-отчеты">Авансовые отчеты</a></li>
+<li><a href="#структура-данных">Структура данных</a>
+<ul>
+<li><a href="#клиент-awr-client">Клиент (awr_client)</a></li>
+<li><a href="#проект-awr-project">Проект (awr_project)</a></li>
+<li><a href="#авансовый-отчет-awr-expensereport">Авансовый отчет (awr_expensereport)</a></li>
+<li><a href="#строка-авансового-отчета-awr-expensereportrow">Строка авансового отчета (awr_expensereportrow)</a></li>
+</ul></li>
+<li><a href="#списки-авансовых-отчетов-отчетов">Списки авансовых отчетов (Отчетов)</a></li>
+<li><a href="#форма-просмотра-отчета">Форма просмотра отчета</a></li>
+<li><a href="#форма-редактирования">Форма редактирования</a></li>
+<li><a href="#форма-прикрепления-файлов">Форма прикрепления файлов</a></li>
+<li><a href="#строки-авансового-отчета">Строки авансового отчета</a></li>
+<li><a href="#отправка-в-бухгалтерию">Отправка в бухгалтерию</a></li>
+<li><a href="#итог">Итог</a></li>
+</ul></li>
+</ul>
+</nav>
+                
+                
+
+<h2 id="предисловие">Предисловие</h2>
+
+<p>&nbsp; &nbsp;В этой статье хотелось бы поделиться опытом применения PowerApps совместно с Dynamics 365 Customer Engagement (CRM) в компании <a href="http://www.awara-it.com/">AWARA-IT</a>. В нашей компании всегда приветствуется проявление инициативы по новым, интересным направлениям в сфере IT. PowerApps на мой взгляд является одним из таких. Так же достаточно насущно стоит вопрос оперативности и простоты заполнения авансовых отчетов сотрудниками, которые часто ездят в командировки.<BR></p>
+
+<p>&nbsp; &nbsp; Начнем с того что такое <a href="https://powerapps.microsoft.com/ru-ru/">PowerApps</a>? Это инструмент для создания бизнес-приложений для веба и мобильных платформ. Подразумевается, что приложения будут тесно интегрироваться с облачными службами Microsoft и Office 365. Готовое приложение можно открывать по ссылке в браузере или же через специальное приложение на <a href="https://play.google.com/store/apps/details?id=com.microsoft.msapps&amp;hl=en_US">Android</a>  или <a href="https://itunes.apple.com/ru/app/powerapps/id1047318566?mt=8">IOS</a>.
+Когда это полезно?</p>
+
+<ol>
+<li>Когда вы хотите создать бизнес приложение, которое использует несколько источников данных (SharePoint Online, SQL Azure, Flow, Dynamics 365).</li>
+<li>Когда нет жестких требований к красоте интерфейса и в приоритете функциональность. Хотя возможность редактирования стилей так же доступна.</li>
+<li>Когда у вас есть подписка на Office 365.</li>
+<li>Когда некому программировать под мобильные платформы и хочется получить готовый результат в короткие сроки.</li>
+<li>Если вы хотите сэкономить, то можно построить решение на базе Common Data Services и PowerApps. При этом доступ к исходным системам необязателен и можно сэкономить на лицензиях.<BR></li>
+</ol>
+
+<p>&nbsp; &nbsp;Мне удалось создать достаточно функциональное приложение по управлению авансовыми отчетами примерно 3 недели, уделяя этому примерно 3 часа в день, с учетом недели обучения на YouTube каналах. Мне достаточно было нескольких уроков на <a href="https://www.youtube.com/watch?v=CubdnBklOzg&amp;list=PLcwrIWK7WBcRyFBAFeC-Ws8kJYAGTc8Qi">этом</a> канале. Если есть трудности, то можно задать вопрос на <a href="https://powerusers.microsoft.com/t5/PowerApps-Community/ct-p/PowerApps1">форуме</a>. Отвечают достаточно оперативно.<BR></p>
+
+<p>&nbsp; &nbsp;Поскольку ресурсов для обучения предостаточно, то я не буду описывать каждый шаг в создании приложения, а укажу на ключевые моменты в создании приложения, которые вызвали у меня затруднения. За простоту разработки приложения приходится платить слабой информативностью ошибок. Иногда приходилось долго подбирать правильное поле для сохранения или отображения значений. И так поехали.</p>
+
+<h2 id="авансовые-отчеты">Авансовые отчеты</h2>
+
+<p>&nbsp; &nbsp;Суть приложения в том, чтобы сотрудники могли создавать заявки на командировку, заносить расходы в процессе командировки и прикреплять фотографии чеков. Заполненный авансовый отчет отправлять в бухгалтерию.<BR></p>
+
+<p>&nbsp; &nbsp;Приложение будет адаптировано для мобильного приложения. В качестве хранилища будет использоваться облачная версия Dynamics 365 Customer Engagement (CRM). Рассылки уведомлений я не будут описывать в этой статье, лишь добавлю ссылки на те методы, которые использовал для формирования писем с вложениями.</p>
+
+<h2 id="структура-данных">Структура данных</h2>
+
+<p>Схематично структуру данных можно представить в виде следующей схемы.</p>
+
+<p><img src="/img/2019-01-26-powerapps-expense-report/1.png" alt="" /></p>
+
+<p>Для построения схемы пользовался <a href="https://www.dbdesigner.net/">этим</a>.
+В сущностях CRM это выглядит следующим образом. Несущественные поля упускаю.</p>
+
+<h3 id="клиент-awr-client">Клиент (awr_client)</h3>
+
+<p><img src="/img/2019-01-26-powerapps-expense-report/2.png" alt="" /></p>
+
+<h3 id="проект-awr-project">Проект (awr_project)</h3>
+
+<p><img src="/img/2019-01-26-powerapps-expense-report/3.png" alt="" /></p>
+
+<h3 id="авансовый-отчет-awr-expensereport">Авансовый отчет (awr_expensereport)</h3>
+
+<p>Включены примечания, к ним будут прикладываться фотографии.<BR>
+Поле awr_name расширено до 450 символов
+<img src="/img/2019-01-26-powerapps-expense-report/4.png" alt="" /></p>
+
+<h3 id="строка-авансового-отчета-awr-expensereportrow">Строка авансового отчета (awr_expensereportrow)</h3>
+
+<p>Включены примечания, к ним будут прикладываться фотографии.<BR>
+Поле awr_name расширено до 450 символов
+<img src="/img/2019-01-26-powerapps-expense-report/5.png" alt="" /></p>
+
+<h2 id="списки-авансовых-отчетов-отчетов">Списки авансовых отчетов (Отчетов)</h2>
+
+<p>&nbsp; &nbsp;Как мы ранее договорились, описывать создание приложения очень подробно я не буду. Если вы пропустили предисловие, то там говорилось о том, что можно быстро научиться создавать PowerApps приложения на YouTube, например <a href="https://www.youtube.com/watch?v=CubdnBklOzg&amp;list=PLcwrIWK7WBcRyFBAFeC-Ws8kJYAGTc8Qi">тут</a>.<BR></p>
+
+<p>Начало создания приложения выглядит так:</p>
+
+<p><img src="/img/2019-01-26-powerapps-expense-report/6.png" alt="" />
+<img src="/img/2019-01-26-powerapps-expense-report/7.png" alt="" />
+<img src="/img/2019-01-26-powerapps-expense-report/8.png" alt="" /></p>
+
+<p>Для начала зададим переменные для хранения почты текущего пользователя и статус для выбранного представления. Мы это будем использовать чуть позже. Фокус на базовом экране.</p>
+
+<p><img src="/img/2019-01-26-powerapps-expense-report/9.png" alt="" /></p>
+
+<pre><code>Set(varCurrentUserEmail;ПользователиOffice365.MyProfile().Mail);;
+Set(varSelectedViewStatus;1)
+</code></pre>
+
+<p>Для меня было странно, что переменные создаются в момент присвоения значений, а не перед этим. Я долго искал где их определить. Из-за этой странной логики, иногда переменные ведут себя странно.<BR></p>
+
+<p>Не смотрите на цвета, это я уже раскрашивал списки после отладки.<BR></p>
+
+<p><span style="color:red;"><strong>Важно! Разделители между параметрами и методами зависят от локальных настроек. Подробнее</strong></span> <a href="https://docs.microsoft.com/ru-ru/powerapps/maker/canvas-apps/global-apps">тут</a></p>
+
+<p>Добавим все необходимые источники данных.
+<img src="/img/2019-01-26-powerapps-expense-report/10.png" alt="" /></p>
+
+<p>Добавим раскрывающийся список с представлениями для списка.</p>
+
+<p><img src="/img/2019-01-26-powerapps-expense-report/11.png" alt="" /></p>
+
+<p>Метод на изменение обновляет значение выбранного статуса
+<img src="/img/2019-01-26-powerapps-expense-report/12.png" alt="" /></p>
+
+<pre><code>Set(varSelectedViewStatus;Switch(ddListView.Selected.Value;&quot;Все мои авансовые отчеты&quot;;124000000;&quot;Мои черновики&quot;;1))
+</code></pre>
+
+<p>Отфильтруем в зависимости от выбранного представления и по почте текущего пользователя.
+<img src="/img/2019-01-26-powerapps-expense-report/13.png" alt="" /></p>
+
+<p>Сортировка осуществляется по дате создания в обратном порядке, т.е. сначала самые новые.</p>
+
+<pre><code>SortByColumns(Search(Filter('Авансовые отчеты';Сотрудник = varCurrentUserEmail &amp;&amp; ('Причина состояния'=1 || 'Причина состояния'=varSelectedViewStatus)); TextSearchBox1.Text; &quot;awr_name&quot;); &quot;createdon&quot;; If(SortDescending1; Ascending; Descending))
+</code></pre>
+
+<p>Макет я сначала выбрал с 3 значениями, потом просто скопировал еще одно поле и вывел туда значение общей суммы отчета.</p>
+
+<p><img src="/img/2019-01-26-powerapps-expense-report/14.png" alt="" />
+<img src="/img/2019-01-26-powerapps-expense-report/15.png" alt="" /></p>
+
+<p>Можете выбрать любой шаблон, какой захочется.<BR>
+Цвет строк отчетов будет зависеть от статуса.</p>
+
+<p><img src="/img/2019-01-26-powerapps-expense-report/16.png" alt="" /></p>
+
+<p>Переход на страницу просмотра определяем следующим образом.<BR>
+Мы определяем новую переменную, чтобы туда записать выбранный отчет</p>
+
+<pre><code>Navigate(scrnViewExpenseReport; ScreenTransition.None;{selectedExpense:galExpenseList.Selected})
+</code></pre>
+
+<p><img src="/img/2019-01-26-powerapps-expense-report/17.png" alt="" /></p>
+
+<h2 id="форма-просмотра-отчета">Форма просмотра отчета</h2>
+
+<p>На самой форме нужно поменять способ получения текста LookUp полей.
+<img src="/img/2019-01-26-powerapps-expense-report/18.png" alt="" /></p>
+
+<pre><code>LookUp(Клиенты;awr_clientid=ThisItem.Клиент;awr_name)
+</code></pre>
+
+<p><img src="/img/2019-01-26-powerapps-expense-report/19.png" alt="" /></p>
+
+<pre><code>LookUp(Проекты;awr_projectid=ThisItem.Проект; awr_name)
+</code></pre>
+
+<p>Определим для начала переход на форму редактирования.</p>
+
+<p><img src="/img/2019-01-26-powerapps-expense-report/20.png" alt="" /></p>
+
+<pre><code>EditForm(frmEdit);;Navigate(scrnEditExpenseReport; ScreenTransition.None)
+</code></pre>
+
+<h2 id="форма-редактирования">Форма редактирования</h2>
+
+<p>&nbsp;&nbsp;На форме редактирования самым сложным было настроить LookUp поля, чтобы они сохраняли данные. Что я для этого сделал?<BR></p>
+
+<p>&nbsp;&nbsp;Поменял настройку в приложении. После чего появилась возможность менять типы полей для LookUp значений. Я 2 дня пытался понять почему у меня ничего не меняется как написано в мануалах, пока не поменял это.</p>
+
+<p><img src="/img/2019-01-26-powerapps-expense-report/21.png" alt="" /></p>
+
+<p>При добавлении лукап полей важно выбрать именно текстовое поле, в котором показывается Guid. Может можно и как-то по-другому это настроить, но у меня и мануалах так.
+<img src="/img/2019-01-26-powerapps-expense-report/22.png" alt="" />
+Меняем тип на «Допустимые значения»</p>
+
+<p><img src="/img/2019-01-26-powerapps-expense-report/23.png" alt="" />
+Акцент на выпадающем списке и задаём значения списка.</p>
+
+<pre><code>ShowColumns(Клиенты;&quot;awr_name&quot;;&quot;awr_clientid&quot;)
+</code></pre>
+
+<p><img src="/img/2019-01-26-powerapps-expense-report/24.png" alt="" /></p>
+
+<p>Теперь отображаемое текущее значение.
+<img src="/img/2019-01-26-powerapps-expense-report/25.png" alt="" /></p>
+
+<pre><code>LookUp(Клиенты;awr_clientid=Parent.Default;awr_name)
+</code></pre>
+
+<p>Так же важно указать возвращаемое значение.</p>
+
+<pre><code>ddClient.Selected.awr_clientid
+</code></pre>
+
+<p><img src="/img/2019-01-26-powerapps-expense-report/26.png" alt="" /></p>
+
+<p>Такие же действия производим с проектами.
+<img src="/img/2019-01-26-powerapps-expense-report/27.png" alt="" /></p>
+
+<pre><code>ShowColumns(Filter(Проекты; awr_client.awr_clientid=ddClient.Selected.awr_clientid);&quot;awr_name&quot;;&quot;awr_projectid&quot;)
+</code></pre>
+
+<p>Как видите значения фильтруются по выбранному клиенту.
+<img src="/img/2019-01-26-powerapps-expense-report/28.png" alt="" /></p>
+
+<pre><code>LookUp(Проекты;awr_projectid=Parent.Default;awr_name)
+</code></pre>
+
+<p><img src="/img/2019-01-26-powerapps-expense-report/29.png" alt="" /></p>
+
+<p>Для поля даты начала ставим условие, что если мы создаем новый отчет, то ставить значение текущей даты
+<img src="/img/2019-01-26-powerapps-expense-report/30.png" alt="" /></p>
+
+<pre><code>If(frmEdit.Mode = FormMode.New; Today(); Parent.Default)
+</code></pre>
+
+<p>Дату окончания поставим больше на 3 дня по-умолчанию.
+<img src="/img/2019-01-26-powerapps-expense-report/31.png" alt="" />
+Кнопка сохранения
+<img src="/img/2019-01-26-powerapps-expense-report/32.png" alt="" />
+Кнопка отмены
+<img src="/img/2019-01-26-powerapps-expense-report/33.png" alt="" /></p>
+
+<h2 id="форма-прикрепления-файлов">Форма прикрепления файлов</h2>
+
+<p>&nbsp;&nbsp;Создадим новый экран, где у нас будут прикрепляться фотографии чеков и показываться список уже имеющихся
+<img src="/img/2019-01-26-powerapps-expense-report/34.png" alt="" />
+Создадим экран с камерой
+<img src="/img/2019-01-26-powerapps-expense-report/35.png" alt="" />
+Зададим действие нажатия на камеру для получения фотографии.
+<img src="/img/2019-01-26-powerapps-expense-report/36.png" alt="" /></p>
+
+<pre><code>ClearCollect(CameraImages;Camera1.Photo);;
+Clear(Image);;
+ForAll(CameraImages;Collect(Image;{Filename:&quot;img.jpg&quot;;fileBody:Url}));;
+Back()
+</code></pre>
+
+<p>Здесь мне пришлось сначала написать Collect(Image;{Filename:&ldquo;img.jpg&rdquo;;fileBody:Url}) , чтобы создалась переменная Image. Потом уже все расставить в нормальном порядке.
+Переход на экран с камерой у нас будет происходить при нажатии на кнопку
+<img src="/img/2019-01-26-powerapps-expense-report/37.png" alt="" />
+Просмотр сделанной фотографии.
+<img src="/img/2019-01-26-powerapps-expense-report/38.png" alt="" />
+И самое интересное сохранение.
+<img src="/img/2019-01-26-powerapps-expense-report/39.png" alt="" /></p>
+
+<p>При сохранении создается объект «Примечание», куда пишется описание из соответствующего поля и к нему прикладывается файл с фотографией и именем, состоящим из случайного числа. Примечание связано с Авансовым отчетом.</p>
+
+<pre><code>Patch(Примечания;Defaults(Примечания);{subject:Text(Now(); &quot;[$-ru-RU]dd.mm.yyyy hh:mm&quot;);notetext:txtDescription.Text;_objectid_value:selectedExpense.'Авансовый отчет';_objectid_type:&quot;awr_expensereports&quot;;filename:&quot;img_&quot;&amp; Text(Rand())&amp;&quot;.jpg&quot;;documentbody:If(StartsWith(First(Image).fileBody;&quot;data:image&quot;);Replace(First(Image).fileBody;1; Len(Left(First(Image).fileBody;Find(&quot;,&quot;;First(Image).fileBody)));&quot;&quot;);First(Image).fileBody)});;
+Reset(txtDescription);;
+Clear(Image)
+</code></pre>
+
+<p>Признаюсь, что эту идею я нашел на просторах интернета, <a href="https://www.inogic.com/blog/2018/07/create-attachment-in-crm-with-camera-control-using-canvas-app-in-powerapps/">тут</a>.
+Зададим очистку получившейся фотографии, на случай, если фотография не удалась.
+ <img src="/img/2019-01-26-powerapps-expense-report/40.png" alt="" />
+Список приложенных фотографий отобразим в галерее, заполненной список примечаний.
+<img src="/img/2019-01-26-powerapps-expense-report/41.png" alt="" /></p>
+
+<pre><code>SortByColumns(Filter(Примечания; _objectid_value=selectedExpense.'Авансовый отчет');&quot;createdon&quot;)
+</code></pre>
+
+<p>Удаление строки выглядит так
+<img src="/img/2019-01-26-powerapps-expense-report/42.png" alt="" /></p>
+
+<pre><code>Remove(Примечания;galNotes_1.Selected)
+</code></pre>
+
+<p>Форма готова, теперь можно определить кнопку перехода на эту форму.
+<img src="/img/2019-01-26-powerapps-expense-report/43.png" alt="" /></p>
+
+<pre><code>Navigate(scrnAddAttachment;None;{selectedExpense:galExpenseList.Selected})
+</code></pre>
+
+<h2 id="строки-авансового-отчета">Строки авансового отчета</h2>
+
+<p>&nbsp;&nbsp;Теперь нужно определить функционал добавления строк авансового отчета. Описание того, на что были потрачены деньги.<BR><BR>
+Создаем новый экран и добавляем туда форму добавления строк и галерею (список) для просмотра добавленных строк и их удаления.<BR><BR>
+Форма привязана к сущности строк авансового отчета. Не забудьте поменять режим формы по умолчанию на «Создать».
+<img src="/img/2019-01-26-powerapps-expense-report/44.png" alt="" />
+Чтобы привязывать новый объект с родительским авансовым отчетом, нужно задать значение по умолчанию для поля «Авансовым отчет».
+<img src="/img/2019-01-26-powerapps-expense-report/45.png" alt="" />
+Так определяется кнопка сохранения
+<img src="/img/2019-01-26-powerapps-expense-report/46.png" alt="" /></p>
+
+<pre><code>SubmitForm(frmEditExpenseRow);;ResetForm(frmEditExpenseRow)
+</code></pre>
+
+<p>Так сброс
+<img src="/img/2019-01-26-powerapps-expense-report/47.png" alt="" />
+Определим источник данных для списка строк.
+<img src="/img/2019-01-26-powerapps-expense-report/48.png" alt="" /></p>
+
+<pre><code>SortByColumns(Filter('Строки авансового отчета'; 'Авансовый отчет'=selectedExpense.awr_expensereportid);&quot;createdon&quot;)
+</code></pre>
+
+<p>Кнопка удаления строк
+<img src="/img/2019-01-26-powerapps-expense-report/49.png" alt="" />
+Кнопка выделения строки заполняет форму данными для редактирования.
+<img src="/img/2019-01-26-powerapps-expense-report/50.png" alt="" /></p>
+
+<pre><code>Select(Parent);;EditForm(frmEditExpenseRow)
+</code></pre>
+
+<p>Кнопка возврата.
+<img src="/img/2019-01-26-powerapps-expense-report/51.png" alt="" />
+Определим кнопку перехода к строкам авансового отчета.
+<img src="/img/2019-01-26-powerapps-expense-report/52.png" alt="" /></p>
+
+<pre><code>Navigate(scrnExpenseReportRows; ScreenTransition.None;{selectedExpense:selectedExpense})
+</code></pre>
+
+<h2 id="отправка-в-бухгалтерию">Отправка в бухгалтерию</h2>
+
+<p>Когда отчет заполнен, нужно отправить его в бухгалтерию, нажатием на кнопку.
+<img src="/img/2019-01-26-powerapps-expense-report/53.png" alt="" /></p>
+
+<pre><code>Patch('Авансовые отчеты';selectedExpense;{'Причина состояния':124000000});;Back()
+</code></pre>
+
+<p>Видимость кнопки зависит от статуса
+<img src="/img/2019-01-26-powerapps-expense-report/54.png" alt="" /></p>
+
+<h2 id="итог">Итог</h2>
+
+<p>&nbsp;&nbsp;Итогом всего процесса обычно является документ, в нашем случае его можно сформировать в CRM или в 1С после отработки процесса интеграции. Для работы рассылок из примечаний я создавал компонент на основе <a href="https://mahenderpal.wordpress.com/2014/01/20/sending-email-with-entity-attachment-from-notes/">этого</a> описания.<BR><BR>
+&nbsp;&nbsp;Хочется так же добавить, что я получил удовольствие от построения приложений на PowerApps, потому что этот инструмент позволяет получить функционал в максимально короткие сроки. Вы можете создавать приложения максимально быстро и при это не пускаете конечного пользователя напрямую в SharePoint или CRM, где сотруднику еще нужно разъяснить куда ему можно нажимать, а куда нет. К тому же приложение доступно на мобильных платформах. Кто сталкивался с тем как это долго и дорого создается, тот понимает в чем выгода.</p>
+
+
+                
+                
+<div class="entry-shang text-center">
+    
+	    <p>--Андрей Палтусов--</p>
+	
+	
+</div>
+
+
+<script type="text/javascript" src="/js/reward.js"></script>
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "paltusovblog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>ДРУЗЬЯ</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href="https://mvp.microsoft.com/es-es/PublicProfile/5002205">Alexander Ermakov</a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href="" rel="alternate" type="application/rss+xml" title="Андрей Палтусов" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:paltandrey@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    <li>
+                        <a href="https://twitter.com/Kipetcoff">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+
+                    
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/profile.php?id=100002187353226">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/Kipetcoff">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Андрей Палтусов , 2019
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+
+
+
+
+
+</body>
+</html>
