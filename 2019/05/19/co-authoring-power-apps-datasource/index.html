@@ -8,14 +8,14 @@
     <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <meta name="description" content="Андрей Палтусов">
+    <meta name="description" content="Co-authoring Power Apps datasource">
     
     <meta name="keyword"  content="Kipetcoff, Dynamics CRM, SharePoint, Dynamics 365, Paltusov, Палтусов">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Андрей Палтусов | Andrey Paltusov Blog | Kipetcoff</title>
+    <title>Co-authoring Power Apps datasource-Андрей Палтусов | Andrey Paltusov Blog | Kipetcoff</title>
 
-    <link rel="canonical" href="/search/placeholder/">
+    <link rel="canonical" href="/2019/05/19/co-authoring-power-apps-datasource/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -129,7 +129,7 @@
 
 <style type="text/css">
     header.intro-header {
-        background-image: url('/img/karelia1.jpg')
+        background-image: url('/img/karelia5.jpg')
     }
 </style>
 <header class="intro-header">
@@ -139,16 +139,20 @@
                 <div class="post-heading">
                     <div class="tags">
                         
+                        <a class="tag" href="/tags/powerapps" title="PowerApps">
+                            PowerApps
+                        </a>
+                        
                     </div>
-                    <h1></h1>
+                    <h1>Co-authoring Power Apps datasource</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
 			Posted by 
 			
-		            Андрей Палтусов
+			        &#34;Andrey Paltusov&#34;
 			 
 			on 
-			Monday, January 1, 0001
+			Sunday, May 19, 2019
                         
                     </span>
                 </div>
@@ -176,7 +180,82 @@
                 </header>
                 
                 
-                
+                <p>&nbsp; &nbsp;Have you ever seen several users working with the same data in the same time? This is typical scenario for all client-server applications and for PowerApps too. In the article below I would like to describe one of the possible solutions for coauthoring in PowerApps.<BR></p>
+
+<p>&nbsp; &nbsp; Let’s create PowerApps template based on the custom SharePoint list.</p>
+
+<p><img src="/img/2019-05-19-powerapps-timer/1.png" alt="" /></p>
+
+<p><img src="/img/2019-05-19-powerapps-timer/2.png" alt="" /></p>
+
+<p>&nbsp; &nbsp;Usually the problem appears when users edit same data in the same time. Because of that, I will describe an idea only for data edition screen.</p>
+
+<p>&nbsp; &nbsp;First, we need to redefine the source for editing form, it will be selected grid row as new variable.</p>
+
+<p><img src="/img/2019-05-19-powerapps-timer/3.png" alt="" /></p>
+
+<p><img src="/img/2019-05-19-powerapps-timer/4.png" alt="" /></p>
+
+<p>The idea is to compare from time to time last updated timestamp on the server side and client side. For this purpose, I will use <strong>Timer</strong> component.</p>
+
+<p><img src="/img/2019-05-19-powerapps-timer/5.png" alt="" /></p>
+
+<p>Timer will be triggered by opening the screen.</p>
+
+<p><img src="/img/2019-05-19-powerapps-timer/6.png" alt="" /></p>
+
+<p><img src="/img/2019-05-19-powerapps-timer/7.png" alt="" /></p>
+
+<p>To avoid a situation where the current value will be replaced by the server value, we will create a dialog box.</p>
+
+<p><img src="/img/2019-05-19-powerapps-timer/8.png" alt="" /></p>
+
+<p>Now let&rsquo;s define a timer expiry event.</p>
+
+<p><img src="/img/2019-05-19-powerapps-timer/14.png" alt="" /></p>
+
+<pre><code>UpdateContext({varTimerStart: false});//Switch off timer
+Refresh(Test_PowerAppsTimer);//Refrech sharepoint list datasource
+UpdateContext(//Get row from the server
+    {
+        varUpdatedRow: LookUp(
+            Test_PowerAppsTimer,
+            ID = varSelectedRow.ID
+        )
+    }
+);
+If(//If the form mode is editing, and the server change date is greater than the client date, and the values are not equal.
+    EditForm1.Mode = FormMode.Edit &amp;&amp; varSelectedRow.Modified &lt; varUpdatedRow.Modified &amp;&amp; varSelectedRow.Title &lt;&gt; varUpdatedRow.Title,
+    UpdateContext({updateDialogVisible: true}),//Then show dialog window
+    Reset(Timer1_1);//Else reset timer and start it once again
+    UpdateContext({varTimerStart: true})
+);
+</code></pre>
+
+<p>Then define the visibility property of the dialog.</p>
+
+<p><img src="/img/2019-05-19-powerapps-timer/9.png" alt="" /></p>
+
+<p>Let’s define button events:</p>
+
+<p><img src="/img/2019-05-19-powerapps-timer/10.png" alt="" /></p>
+
+<pre><code>UpdateContext({varSelectedRow: varUpdatedRow});//Update client row variable
+UpdateContext({updateDialogVisible: false});//Hide dialog
+Reset(Timer1_1);//Reset timer
+UpdateContext({varTimerStart: true})//Start timer
+</code></pre>
+
+<p><img src="/img/2019-05-19-powerapps-timer/11.png" alt="" /></p>
+
+<p>Finally, we need to save the form values in the SharePoint list and hide the timer.</p>
+
+<p><img src="/img/2019-05-19-powerapps-timer/12.png" alt="" /></p>
+
+<p><img src="/img/2019-05-19-powerapps-timer/13.png" alt="" /></p>
+
+<p>&nbsp; &nbsp;Now, if someone changes SharePoint data during the editing process, the user will receive confirmation of the replacement of the current form data with the SharePoint server data from another user, after which he may decide to leave the current values or replace with updates from the server.</p>
+
 
                 
                 
@@ -194,6 +273,11 @@
 
                 <hr>
                 <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2019/01/26/powerapps-expense-report/" data-toggle="tooltip" data-placement="top" title="Авансовый отчет на PowerApps и Dynamics 365 Customer Engagement">&larr;
+                            Предыдущая статья</a>
+                    </li>
                     
                     
                 </ul>
@@ -335,7 +419,7 @@
                     
                 </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; Андрей Палтусов , 0001
+                    Copyright &copy; Андрей Палтусов , 2019
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
                     <iframe

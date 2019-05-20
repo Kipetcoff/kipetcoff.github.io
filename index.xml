@@ -6,10 +6,21 @@
     <description>Recent content on Андрей Палтусов</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 26 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 19 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://paltusov.pro/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Co-authoring Power Apps datasource</title>
+      <link>http://paltusov.pro/2019/05/19/co-authoring-power-apps-datasource/</link>
+      <pubDate>Sun, 19 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://paltusov.pro/2019/05/19/co-authoring-power-apps-datasource/</guid>
+      <description>&amp;nbsp; &amp;nbsp;Have you ever seen several users working with the same data in the same time? This is typical scenario for all client-server applications and for PowerApps too. In the article below I would like to describe one of the possible solutions for coauthoring in PowerApps.
+&amp;nbsp; &amp;nbsp; Let’s create PowerApps template based on the custom SharePoint list.
+&amp;nbsp; &amp;nbsp;Usually the problem appears when users edit same data in the same time.</description>
+    </item>
     
     <item>
       <title>Авансовый отчет на PowerApps и Dynamics 365 Customer Engagement</title>
