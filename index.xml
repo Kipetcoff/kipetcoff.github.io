@@ -6,10 +6,19 @@
     <description>Recent content on Андрей Палтусов</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 19 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://paltusov.pro/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PowerApps Подключение к 1С</title>
+      <link>http://paltusov.pro/2019/07/13/powerapps-1c-custom-connector/</link>
+      <pubDate>Sat, 13 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://paltusov.pro/2019/07/13/powerapps-1c-custom-connector/</guid>
+      <description>Идея &amp;nbsp; &amp;nbsp;Мне давно хотелось попробовать в PowerApps создать пользовательские подключения для тех случаев, когда стандартных источников данных недостаточно. Первое, что пришло мне на ум из сторонних систем, работающих с OData, был 1C. Это достаточно распространенная система в России и было бы полезно иметь возможность подключаться к ней из облачных сервисов Microsoft. В компании AWARA-IT сильная практика 1С, поэтому мы без труда смогли развернуть тестовую среду для проверки работы такой архитектуры.</description>
+    </item>
     
     <item>
       <title>Co-authoring Power Apps datasource</title>

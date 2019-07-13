@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><head>
+    <meta name="google-site-verification" content="9vIieCe-Qpd78QOmBl63rGtIVbhY6sYyuxX3j8XWBA4" />
+    <meta name="baidu-site-verification" content="LRrmH41lz7" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="description" content="PowerApps Подключение к 1С">
+    
+    <meta name="keyword"  content="Kipetcoff, Dynamics CRM, SharePoint, Dynamics 365, Paltusov, Палтусов">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>PowerApps Подключение к 1С-Андрей Палтусов | Andrey Paltusov Blog | Kipetcoff</title>
+
+    <link rel="canonical" href="/2019/07/13/powerapps-1c-custom-connector/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+	
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/docco.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+</head>
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Андрей Палтусов</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Главная</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/it">IT</a>
+                    </li>
+                    
+                    
+		    
+                        <li><a href="/top/about/">Обо мне</a></li>
+                    
+                        <li><a href="/top/contacts/">Контакты</a></li>
+                    
+
+                    
+		    <li>
+                        <a href="/search">Поиск <img src="/img/search.png" height="15" style="cursor: pointer;"></a>
+		    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/karelia6.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/powerapps" title="PowerApps">
+                            PowerApps
+                        </a>
+                        
+                    </div>
+                    <h1>PowerApps Подключение к 1С</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+			Posted by 
+			
+			        &#34;Andrey Paltusov&#34;
+			 
+			on 
+			Saturday, July 13, 2019
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>Оглавление</h2>
+                </header>
+                <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#идея">Идея</a></li>
+<li><a href="#пользовательские-соединители-custom-connectors">Пользовательские соединители (Custom Connectors)</a></li>
+<li><a href="#чтение-списка-документов">Чтение списка документов</a></li>
+<li><a href="#создание-документа">Создание документа</a></li>
+<li><a href="#обновление-табличной-части">Обновление табличной части</a></li>
+<li><a href="#итог">Итог</a></li>
+</ul></li>
+</ul>
+</nav>
+                
+                
+
+<h2 id="идея">Идея</h2>
+
+<p>&nbsp; &nbsp;Мне давно хотелось попробовать в <strong>PowerApps</strong> создать пользовательские подключения для тех случаев, когда стандартных источников данных недостаточно. Первое, что пришло мне на ум из сторонних систем, работающих с OData, был 1C. Это достаточно распространенная система в России и было бы полезно иметь возможность подключаться к ней из облачных сервисов Microsoft. В компании <a href="http://www.awara-it.com/">AWARA-IT</a> сильная практика 1С, поэтому мы без труда смогли развернуть тестовую среду для проверки работы такой архитектуры.</p>
+
+<p>&nbsp; &nbsp;Настройку OData в 1С я не буду рассматривать в этой статье. Важно, чтобы адрес был доступен во внешней сети. Например, такого вида:</p>
+
+<p><a href="http://ХХХХ/BuhDemo/odata/standard.odata/">http://ХХХХ/BuhDemo/odata/standard.odata/</a></p>
+
+<p>&nbsp; &nbsp;Конфигурация базы не имеет значения. Я не претендую на правильность заполнения реквизитов документов 1С в этой статье, все действия по созданию и изменению записей являются лишь примером успешных вызовов команд, которые меняют данные в 1С. В реальной жизни вы можете подобрать нужную конфигурацию 1С и заполнять те атрибуты, которые необходимы для ваших бизнес-задач.</p>
+
+<p>&nbsp; &nbsp;Для проверки работы с 1С я попробую вызвать несколько самых распространенных команд: чтение списка документов, создание документа, обновление табличной части.</p>
+
+<h2 id="пользовательские-соединители-custom-connectors">Пользовательские соединители (Custom Connectors)</h2>
+
+<p>&nbsp; &nbsp;Итак, давайте зайдем в PowerApps и найдем там раздел с пользовательскими подключениями.
+<img src="/img/2019-07-13-powerapps-1c-custom-connector/1.png" alt="" /></p>
+
+<p>Создадим подключение с нуля</p>
+
+<p><img src="/img/2019-07-13-powerapps-1c-custom-connector/2.png" alt="" /></p>
+
+<p>В открывшемся окне введем общие данные о подключении.</p>
+
+<p><img src="/img/2019-07-13-powerapps-1c-custom-connector/3.png" alt="" /></p>
+
+<p>В разделе «Безопасность» выбираем тип проверки подлинности и название атрибутов логина и пароля.</p>
+
+<p><span style="color:red;"><strong>ВНИМЕНИЕ!! Не нужно писать здесь реальный логин и пароль, это просто названия атрибутов, пишите просто login, password.</strong></span></p>
+
+<p><img src="/img/2019-07-13-powerapps-1c-custom-connector/4.png" alt="" /></p>
+
+<h2 id="чтение-списка-документов">Чтение списка документов</h2>
+
+<p>&nbsp; &nbsp;Далее переходим к главному разделу – Определение. Прочитаем список авансовых отчетов. Для этого создадим действие чтения и внесем его название, описание и название метода.</p>
+
+<p><img src="/img/2019-07-13-powerapps-1c-custom-connector/5.png" alt="" /></p>
+
+<p>Теперь укажем адрес вызова и заголовки.
+<a href="http://XXXX/BuhDemo/odata/standard.odata/Document_АвансовыйОтчет">http://XXXX/BuhDemo/odata/standard.odata/Document_АвансовыйОтчет</a></p>
+
+<p><img src="/img/2019-07-13-powerapps-1c-custom-connector/6.png" alt="" /></p>
+
+<p>&nbsp; &nbsp;Чтобы указать ответ, нужно выполнить запрос из какого-нибудь клиента, например, в Restlet Client для Chrome.</p>
+
+<p><img src="/img/2019-07-13-powerapps-1c-custom-connector/7.png" alt="" /></p>
+
+<p>&nbsp; &nbsp;Для импорта примера достаточно одной строки из списка документов, остальные значения из JSON результата можно удалить. Так же можно удалить атрибуты «odata.metadata».
+В результате должно получиться вот что:</p>
+
+<pre><code>{    
+    &quot;value&quot;: [
+        {
+            &quot;Ref_Key&quot;: &quot;faf65bf1-966d-11e9-80e4-441ea1539724&quot;,
+            &quot;DataVersion&quot;: &quot;AAAAAAACmiU=&quot;,
+            &quot;DeletionMark&quot;: false,
+            &quot;Number&quot;: &quot;КП00-000001&quot;,
+            &quot;Date&quot;: &quot;2019-06-24T00:00:00&quot;,
+            &quot;Posted&quot;: false,
+            &quot;ВалютаДокумента_Key&quot;: &quot;a8c61b74-cc0d-11e5-9653-3085a93ddca2&quot;,
+            &quot;Комментарий&quot;: &quot;&quot;,
+            &quot;КурсДокумента&quot;: 1,
+            &quot;КратностьДокумента&quot;: &quot;1&quot;,
+            &quot;Организация_Key&quot;: &quot;8a276db6-ce58-11e5-982d-14dae9b19a48&quot;,
+            &quot;Склад_Key&quot;: &quot;c23de3dc-cc0d-11e5-9653-3085a93ddca2&quot;,
+            &quot;СуммаВключаетНДС&quot;: true,
+            &quot;СуммаДокумента&quot;: 3200,
+            &quot;ТипЦен_Key&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+            &quot;УдалитьУчитыватьНДС&quot;: true,
+            &quot;ФизЛицо_Key&quot;: &quot;8a276dc7-ce58-11e5-982d-14dae9b19a48&quot;,
+            &quot;Ответственный_Key&quot;: &quot;aa00559e-ad84-4494-88fd-f0826edc46f0&quot;,
+            &quot;НДСВключенВСтоимость&quot;: true,
+            &quot;НазначениеАванса&quot;: &quot;&quot;,
+            &quot;КоличествоДокументов&quot;: &quot;&quot;,
+            &quot;КоличествоЛистов&quot;: &quot;&quot;,
+            &quot;РучнаяКорректировка&quot;: false,
+            &quot;ПодразделениеОрганизации_Key&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+            &quot;НДСНеВыделять&quot;: false,
+            &quot;ВыданныеАвансы&quot;: [
+            ],
+            &quot;Товары&quot;: [
+            ],
+            &quot;ВозвратнаяТара&quot;: [
+            ],
+            &quot;ОплатаПоставщикам&quot;: [
+            ],
+            &quot;Прочее&quot;: [
+                {
+                    &quot;Ref_Key&quot;: &quot;faf65bf1-966d-11e9-80e4-441ea1539724&quot;,
+                    &quot;LineNumber&quot;: &quot;1&quot;,
+                    &quot;ВидДокВходящий&quot;: &quot;Билет&quot;,
+                    &quot;НомерВходящегоДокумента&quot;: &quot;&quot;,
+                    &quot;ДатаВходящегоДокумента&quot;: &quot;0001-01-01T00:00:00&quot;,
+                    &quot;Поставщик_Key&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+                    &quot;СчетФактура_Key&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+                    &quot;Номенклатура_Key&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+                    &quot;Содержание&quot;: &quot;Билет С.Петербург - Балашов 222&quot;,
+                    &quot;Сумма&quot;: 3200,
+                    &quot;СтавкаНДС&quot;: &quot;НДС18&quot;,
+                    &quot;СуммаНДС&quot;: 0,
+                    &quot;СчетЗатрат_Key&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+                    &quot;Субконто1&quot;: &quot;&quot;,
+                    &quot;Субконто1_Type&quot;: &quot;StandardODATA.Undefined&quot;,
+                    &quot;Субконто2&quot;: &quot;&quot;,
+                    &quot;Субконто2_Type&quot;: &quot;StandardODATA.Undefined&quot;,
+                    &quot;Субконто3&quot;: &quot;&quot;,
+                    &quot;Субконто3_Type&quot;: &quot;StandardODATA.Undefined&quot;,
+                    &quot;СчетЗатратНУ_Key&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+                    &quot;СубконтоНУ1&quot;: &quot;&quot;,
+                    &quot;СубконтоНУ1_Type&quot;: &quot;StandardODATA.Undefined&quot;,
+                    &quot;СубконтоНУ2&quot;: &quot;&quot;,
+                    &quot;СубконтоНУ2_Type&quot;: &quot;StandardODATA.Undefined&quot;,
+                    &quot;СубконтоНУ3&quot;: &quot;&quot;,
+                    &quot;СубконтоНУ3_Type&quot;: &quot;StandardODATA.Undefined&quot;,
+                    &quot;ОтражениеВУСН&quot;: &quot;&quot;,
+                    &quot;СчетУчетаНДС_Key&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+                    &quot;ПредъявленСФ&quot;: false,
+                    &quot;ДатаСФ&quot;: &quot;0001-01-01T00:00:00&quot;,
+                    &quot;НомерСФ&quot;: &quot;&quot;,
+                    &quot;ПодразделениеЗатрат_Key&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+                    &quot;БланкСтрогойОтчетности&quot;: false,
+                    &quot;СпособУчетаНДС&quot;: &quot;&quot;
+                }
+            ],
+            &quot;ВалютаДокумента@navigationLinkUrl&quot;: &quot;Document_АвансовыйОтчет(guid'faf65bf1-966d-11e9-80e4-441ea1539724')/ВалютаДокумента&quot;,
+            &quot;Организация@navigationLinkUrl&quot;: &quot;Document_АвансовыйОтчет(guid'faf65bf1-966d-11e9-80e4-441ea1539724')/Организация&quot;,
+            &quot;Склад@navigationLinkUrl&quot;: &quot;Document_АвансовыйОтчет(guid'faf65bf1-966d-11e9-80e4-441ea1539724')/Склад&quot;,
+            &quot;ФизЛицо@navigationLinkUrl&quot;: &quot;Document_АвансовыйОтчет(guid'faf65bf1-966d-11e9-80e4-441ea1539724')/ФизЛицо&quot;,
+            &quot;Ответственный@navigationLinkUrl&quot;: &quot;Document_АвансовыйОтчет(guid'faf65bf1-966d-11e9-80e4-441ea1539724')/Ответственный&quot;
+        }
+    ]
+}
+</code></pre>
+
+<p>Прописываем это в пример ответа.</p>
+
+<p><img src="/img/2019-07-13-powerapps-1c-custom-connector/8.png" alt="" /></p>
+
+<p>Если нажать на название ответа, можно посмотреть какие поля определены.</p>
+
+<p><img src="/img/2019-07-13-powerapps-1c-custom-connector/9.png" alt="" />
+<img src="/img/2019-07-13-powerapps-1c-custom-connector/10.png" alt="" /></p>
+
+<p>&nbsp; &nbsp;Пришло время проверить как работает наш метод. Сохраните подключение перед тестированием.
+Переходим в раздел тестирования.
+Для начала нужно создать подключение на основе вашего определения.</p>
+
+<p><img src="/img/2019-07-13-powerapps-1c-custom-connector/11.png" alt="" /></p>
+
+<p>Здесь как раз придется указать логин и пароль от вашей базы 1С.</p>
+
+<p><img src="/img/2019-07-13-powerapps-1c-custom-connector/12.png" alt="" /></p>
+
+<p>После создания вас перекинет на раздел подключений, поэтому нужно будет вернуться обратно к определению своего подключения, в раздел тестирования.
+Выбираем подключение, указываем значение заголовка и вызываем операцию.</p>
+
+<p><img src="/img/2019-07-13-powerapps-1c-custom-connector/13.png" alt="" /></p>
+
+<p>Смотрим, что нам возвращает вызов. Если что-то пошло не так, нужно вернуться в определения и исправить запрос или ответ.</p>
+
+<p><img src="/img/2019-07-13-powerapps-1c-custom-connector/14.png" alt="" />
+<img src="/img/2019-07-13-powerapps-1c-custom-connector/15.png" alt="" /></p>
+
+<p>После этого создать новое подключение на основе этого определения, старое можно безболезненно удалить и проверить вызов снова.</p>
+
+<h2 id="создание-документа">Создание документа</h2>
+
+<p>&nbsp; &nbsp;Теперь рассмотрим вариант, когда нужно создать новый документ в 1С. В нашем случае мы будем создавать документ Авансового отчета. Для этого нужно настроить новое действие.</p>
+
+<p><img src="/img/2019-07-13-powerapps-1c-custom-connector/16.png" alt="" /></p>
+
+<p>Настройки запроса выглядят следующим образом.
+URL адрес: <a href="http://XXXX/BuhDemo/odata/standard.odata/Document_АвансовыйОтчет">http://XXXX/BuhDemo/odata/standard.odata/Document_АвансовыйОтчет</a></p>
+
+<p><img src="/img/2019-07-13-powerapps-1c-custom-connector/17.png" alt="" /></p>
+
+<pre><code>{
+&quot;ВалютаДокумента_Key&quot;: &quot;a8c61b74-cc0d-11e5-9653-3085a93ddca2&quot;,
+&quot;Организация_Key&quot;: &quot;8a276db6-ce58-11e5-982d-14dae9b19a48&quot;,
+&quot;Склад_Key&quot;: &quot;c23de3dc-cc0d-11e5-9653-3085a93ddca2&quot;,
+&quot;ФизЛицо_Key&quot;: &quot;8a276dc7-ce58-11e5-982d-14dae9b19a48&quot;,
+&quot;ДатаНачалаКомандировки&quot;:&quot;2019-06-23T00:00:00&quot;,
+&quot;ДатаОкончанияКомандировки&quot;:&quot;2019-06-26T00:00:00&quot;
+}
+В ответе удаляем атрибут «odata.metadata» и прописываем следующее:
+{
+    &quot;Ref_Key&quot;: &quot;90bd5e08-a281-11e9-80e4-441ea1539724&quot;,
+    &quot;DataVersion&quot;: &quot;AAAAAAACmqc=&quot;,
+    &quot;ФизЛицо_Key&quot;: &quot;8a276dc7-ce58-11e5-982d-14dae9b19a48&quot;,
+    &quot;Организация_Key&quot;: &quot;8a276db6-ce58-11e5-982d-14dae9b19a48&quot;,
+    &quot;КурсДокумента&quot;: 1,
+    &quot;СуммаДокумента&quot;: 0,
+    &quot;ТипЦен_Key&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+    &quot;Number&quot;: &quot;КП00-000020&quot;,
+    &quot;Date&quot;: &quot;2019-07-09T00:00:00&quot;,
+    &quot;НазначениеАванса&quot;: &quot;&quot;,
+    &quot;КоличествоДокументов&quot;: &quot;&quot;,
+    &quot;ВалютаДокумента_Key&quot;: &quot;a8c61b74-cc0d-11e5-9653-3085a93ddca2&quot;,
+    &quot;DeletionMark&quot;: false,
+    &quot;КоличествоЛистов&quot;: &quot;&quot;,
+    &quot;Posted&quot;: false,
+    &quot;СуммаВключаетНДС&quot;: true,
+    &quot;Склад_Key&quot;: &quot;c23de3dc-cc0d-11e5-9653-3085a93ddca2&quot;,
+    &quot;КратностьДокумента&quot;: &quot;1&quot;,
+    &quot;УдалитьУчитыватьНДС&quot;: true,
+    &quot;Ответственный_Key&quot;: &quot;77658e1f-9d93-11e9-80e4-441ea1539724&quot;,
+    &quot;НДСВключенВСтоимость&quot;: true,
+    &quot;Комментарий&quot;: &quot;&quot;,
+    &quot;ВыданныеАвансы&quot;: [
+    ],
+    &quot;РучнаяКорректировка&quot;: false,
+    &quot;НДСНеВыделять&quot;: false,
+    &quot;ПодразделениеОрганизации_Key&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+    &quot;Товары&quot;: [
+    ],
+    &quot;ВозвратнаяТара&quot;: [
+    ],
+    &quot;ОплатаПоставщикам&quot;: [
+    ],
+    &quot;Прочее&quot;: [
+    ],
+    &quot;ВалютаДокумента@navigationLinkUrl&quot;: &quot;Document_АвансовыйОтчет(guid'90bd5e08-a281-11e9-80e4-441ea1539724')/ВалютаДокумента&quot;,
+    &quot;Склад@navigationLinkUrl&quot;: &quot;Document_АвансовыйОтчет(guid'90bd5e08-a281-11e9-80e4-441ea1539724')/Склад&quot;,
+    &quot;ФизЛицо@navigationLinkUrl&quot;: &quot;Document_АвансовыйОтчет(guid'90bd5e08-a281-11e9-80e4-441ea1539724')/ФизЛицо&quot;,
+    &quot;Организация@navigationLinkUrl&quot;: &quot;Document_АвансовыйОтчет(guid'90bd5e08-a281-11e9-80e4-441ea1539724')/Организация&quot;,
+    &quot;Ответственный@navigationLinkUrl&quot;: &quot;Document_АвансовыйОтчет(guid'90bd5e08-a281-11e9-80e4-441ea1539724')/Ответственный&quot;
+}
+</code></pre>
+
+<p><img src="/img/2019-07-13-powerapps-1c-custom-connector/18.png" alt="" /></p>
+
+<p>Обновим соединитель и создадим новое подключение в разделе тестирования.</p>
+
+<p><img src="/img/2019-07-13-powerapps-1c-custom-connector/19.png" alt="" /></p>
+
+<p>Создаем новое подключение с новым действием.</p>
+
+<p><img src="/img/2019-07-13-powerapps-1c-custom-connector/20.png" alt="" /></p>
+
+<p>Если все нормально, то получаем код ответа 201 и радуемся.</p>
+
+<p><img src="/img/2019-07-13-powerapps-1c-custom-connector/21.png" alt="" /></p>
+
+<h2 id="обновление-табличной-части">Обновление табличной части</h2>
+
+<p>&nbsp; &nbsp;Осталось проверить как работает обновление табличной части. Для этого нужно так же определить новое действие.<BR></p>
+
+<p>URL адрес: <a href="http://XXXX/BuhDemo/odata/standard.odata/Document_АвансовыйОтчет('{EntityID}'">http://XXXX/BuhDemo/odata/standard.odata/Document_АвансовыйОтчет('{EntityID}'</a>)<BR></p>
+
+<p>EntityID будет параметром, который будет передаваться в запрос. Это ID документа, у которого будет меняться табличная часть «Прочее».</p>
+
+<p><img src="/img/2019-07-13-powerapps-1c-custom-connector/22.png" alt="" /></p>
+
+<p>Тело запроса:</p>
+
+<pre><code>{
+    &quot;ВидОперации &quot;:&quot;Прочее&quot;,   
+    &quot;Прочее&quot;: [
+                {
+                    &quot;Ref_Key&quot;: &quot;a9e8b422-1cda-11e6-a31d-14dae9b19a48&quot;,
+                    &quot;LineNumber&quot;: &quot;1&quot;,
+                    &quot;ВидДокВходящий&quot;: &quot;Билет&quot;,
+                    &quot;Содержание&quot;: &quot;Билет С.Петербург - Балашов&quot;,
+                    &quot;Сумма&quot;: 3200,
+                    &quot;СтавкаНДС&quot;: &quot;НДС18&quot;,
+                    &quot;СуммаНДС&quot;: 488.14
+                }
+              ]
+}
+</code></pre>
+
+<p>&nbsp; &nbsp;Важно, что табличная часть каждый раз перезаписывается и нужно проставлять самим номера строк, что очень неудобно. Об этом я расскажу в следующей статье, когда буду создавать приложение для работы с этим подключением.<BR></p>
+
+<p>Определяем ответ</p>
+
+<p><img src="/img/2019-07-13-powerapps-1c-custom-connector/23.png" alt="" /></p>
+
+<pre><code>{    
+    &quot;Товары&quot;: [
+    ],
+    &quot;ВозвратнаяТара&quot;: [
+    ],
+    &quot;ОплатаПоставщикам&quot;: [
+    ],
+    &quot;Прочее&quot;: [
+        {
+            &quot;LineNumber&quot;: &quot;1&quot;,
+            &quot;ВидДокВходящий&quot;: &quot;Билет&quot;,
+            &quot;НомерВходящегоДокумента&quot;: &quot;&quot;,
+            &quot;ДатаВходящегоДокумента&quot;: &quot;0001-01-01T00:00:00&quot;,
+            &quot;Поставщик_Key&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+            &quot;СчетФактура_Key&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+            &quot;Номенклатура_Key&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+            &quot;Содержание&quot;: &quot;Билет С.Петербург - Балашов&quot;,
+            &quot;Сумма&quot;: 3200,
+            &quot;СтавкаНДС&quot;: &quot;НДС18&quot;,
+            &quot;СуммаНДС&quot;: 488.14,
+            &quot;СчетЗатрат_Key&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+            &quot;Субконто1&quot;: &quot;&quot;,
+            &quot;Субконто1_Type&quot;: &quot;StandardODATA.Undefined&quot;,
+            &quot;Субконто2&quot;: &quot;&quot;,
+            &quot;Субконто2_Type&quot;: &quot;StandardODATA.Undefined&quot;,
+            &quot;Субконто3&quot;: &quot;&quot;,
+            &quot;Субконто3_Type&quot;: &quot;StandardODATA.Undefined&quot;,
+            &quot;СчетЗатратНУ_Key&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+            &quot;СубконтоНУ1&quot;: &quot;&quot;,
+            &quot;СубконтоНУ1_Type&quot;: &quot;StandardODATA.Undefined&quot;,
+            &quot;СубконтоНУ2&quot;: &quot;&quot;,
+            &quot;СубконтоНУ2_Type&quot;: &quot;StandardODATA.Undefined&quot;,
+            &quot;СубконтоНУ3&quot;: &quot;&quot;,
+            &quot;СубконтоНУ3_Type&quot;: &quot;StandardODATA.Undefined&quot;,
+            &quot;ОтражениеВУСН&quot;: &quot;&quot;,
+            &quot;СчетУчетаНДС_Key&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+            &quot;ПредъявленСФ&quot;: false,
+            &quot;ДатаСФ&quot;: &quot;0001-01-01T00:00:00&quot;,
+            &quot;НомерСФ&quot;: &quot;&quot;,
+            &quot;ПодразделениеЗатрат_Key&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+            &quot;БланкСтрогойОтчетности&quot;: false,
+            &quot;СпособУчетаНДС&quot;: &quot;&quot;
+        }
+    ],
+    &quot;Ref_Key&quot;: &quot;a9e8b422-1cda-11e6-a31d-14dae9b19a48&quot;,
+    &quot;DataVersion&quot;: &quot;AAAAAAACmqk=&quot;,
+    &quot;Склад_Key&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+    &quot;СуммаВключаетНДС&quot;: true,
+    &quot;СуммаДокумента&quot;: 3200,
+    &quot;КурсДокумента&quot;: 1,
+    &quot;ТипЦен_Key&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+    &quot;УдалитьУчитыватьНДС&quot;: false,
+    &quot;КратностьДокумента&quot;: &quot;1&quot;,
+    &quot;ФизЛицо_Key&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+    &quot;Date&quot;: &quot;2016-03-09T00:00:00&quot;,
+    &quot;Number&quot;: &quot;КП00-000001&quot;,
+    &quot;Posted&quot;: true,
+    &quot;Комментарий&quot;: &quot;&quot;,
+    &quot;Организация_Key&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+    &quot;DeletionMark&quot;: false,
+    &quot;ВалютаДокумента_Key&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+    &quot;РучнаяКорректировка&quot;: false,
+    &quot;НДСВключенВСтоимость&quot;: false,
+    &quot;НазначениеАванса&quot;: &quot;&quot;,
+    &quot;Ответственный_Key&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+    &quot;КоличествоДокументов&quot;: &quot;&quot;,
+    &quot;КоличествоЛистов&quot;: &quot;&quot;,
+    &quot;НДСНеВыделять&quot;: false,
+    &quot;ПодразделениеОрганизации_Key&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+    &quot;ВыданныеАвансы&quot;: [
+    ]
+}
+
+</code></pre>
+
+<p>Пересоздаем подключением и проверяем вызов действия.</p>
+
+<p><img src="/img/2019-07-13-powerapps-1c-custom-connector/24.png" alt="" /></p>
+
+<h2 id="итог">Итог</h2>
+
+<p>&nbsp; &nbsp;В результате нашей настройки мы получили подключение к 1С с действиями для чтения и изменения данных. Теперь осталось использовать его в приложении PowerApps, о чем и пойдет речь в следующей статье.</p>
+
+
+                
+                
+<div class="entry-shang text-center">
+    
+	    <p>--Андрей Палтусов--</p>
+	
+	
+</div>
+
+
+<script type="text/javascript" src="/js/reward.js"></script>
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2019/05/19/co-authoring-power-apps-datasource/" data-toggle="tooltip" data-placement="top" title="Co-authoring Power Apps datasource">&larr;
+                            Предыдущая статья</a>
+                    </li>
+                    
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "paltusovblog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        <a href="/tags/powerapps" title="PowerApps">
+                            PowerApps
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>ДРУЗЬЯ</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href="https://mvp.microsoft.com/es-es/PublicProfile/5002205">Alexander Ermakov</a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href="" rel="alternate" type="application/rss+xml" title="Андрей Палтусов" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:paltandrey@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    <li>
+                        <a href="https://twitter.com/Kipetcoff">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+
+                    
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/profile.php?id=100002187353226">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/Kipetcoff">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Андрей Палтусов , 2019
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+
+
+
+
+
+</body>
+</html>
