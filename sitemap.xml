@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://paltusov.pro/2019/07/18/powerapps-1c-custom-connector-2/</loc>
+    <lastmod>2019-07-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://paltusov.pro/2019/07/13/powerapps-1c-custom-connector/</loc>
     <lastmod>2019-07-13T00:00:00+00:00</lastmod>
   </url>
@@ -36,19 +41,19 @@
   
   <url>
     <loc>http://paltusov.pro/categories/it/</loc>
-    <lastmod>2019-07-13T00:00:00+00:00</lastmod>
+    <lastmod>2019-07-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://paltusov.pro/post/</loc>
-    <lastmod>2019-07-13T00:00:00+00:00</lastmod>
+    <lastmod>2019-07-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://paltusov.pro/tags/powerapps/</loc>
-    <lastmod>2019-07-13T00:00:00+00:00</lastmod>
+    <lastmod>2019-07-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -59,7 +64,7 @@
   
   <url>
     <loc>http://paltusov.pro/tags/</loc>
-    <lastmod>2019-07-13T00:00:00+00:00</lastmod>
+    <lastmod>2019-07-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -70,7 +75,7 @@
   
   <url>
     <loc>http://paltusov.pro/</loc>
-    <lastmod>2019-07-13T00:00:00+00:00</lastmod>
+    <lastmod>2019-07-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

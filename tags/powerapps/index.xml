@@ -6,13 +6,22 @@
     <description>Recent content in PowerApps on Андрей Палтусов</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 13 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://paltusov.pro/tags/powerapps/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>PowerApps Подключение к 1С</title>
+      <title>PowerApps Подключение к 1С часть 2</title>
+      <link>http://paltusov.pro/2019/07/18/powerapps-1c-custom-connector-2/</link>
+      <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://paltusov.pro/2019/07/18/powerapps-1c-custom-connector-2/</guid>
+      <description>Чтение списка &amp;nbsp; &amp;nbsp;В этой статье я покажу как работать с пользовательскими подключениями в PowerApps, в частности с подключением к 1C. Настройку такого подключения я рассматривал в предыдущей статье. Подробно рассматривать все шаги создания приложения я не буду. В интернете вы можете достаточное количество обучающего материала на эту тему или же посмотреть мой пример. Я рассмотрю лишь ключевые действия, которые могут вызвать затруднения в реализации Для начала попробуем прочитать список документов, в нашем примере это будут авансовые отчеты.</description>
+    </item>
+    
+    <item>
+      <title>PowerApps Подключение к 1С часть 1</title>
       <link>http://paltusov.pro/2019/07/13/powerapps-1c-custom-connector/</link>
       <pubDate>Sat, 13 Jul 2019 00:00:00 +0000</pubDate>
       
