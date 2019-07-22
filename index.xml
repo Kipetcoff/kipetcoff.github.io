@@ -6,10 +6,20 @@
     <description>Recent content on Андрей Палтусов</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 22 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://paltusov.pro/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Dynamics 365 connection from .Net Core</title>
+      <link>http://paltusov.pro/2019/07/22/dynamics-365-net-core/</link>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://paltusov.pro/2019/07/22/dynamics-365-net-core/</guid>
+      <description>Azure Application Registration &amp;nbsp; &amp;nbsp;There is a big problem when you plan to work with Dynamics 365 from .NET Core SDK. SDK is not compatible with .NET Core. Alternative possibility to work with Dynamics 365 is OData service. Here is detail guide how to set up connection with sample code.
+First you need to register new Application in Azure. Then assign Dynamics 365 service access Generate access token. Don’t forget to copy and save key!</description>
+    </item>
     
     <item>
       <title>PowerApps Подключение к 1С часть 2</title>

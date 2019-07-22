@@ -8,14 +8,14 @@
     <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <meta name="description" content="Андрей Палтусов">
+    <meta name="description" content="OData connection from .Net Core to Dynamics 365 Customer Engagement">
     
     <meta name="keyword"  content="Kipetcoff, Dynamics CRM, SharePoint, Dynamics 365, Paltusov, Палтусов">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Андрей Палтусов | Andrey Paltusov | Kipetcoff</title>
+    <title>Dynamics 365 connection from .Net Core-Андрей Палтусов | Andrey Paltusov | Kipetcoff</title>
 
-    <link rel="canonical" href="/top/about/">
+    <link rel="canonical" href="/2019/07/22/dynamics-365-net-core/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -126,14 +126,39 @@
 
 
 
-<header class="intro-header" style="background-image: url('/img/karelia1.jpg')">
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/karelia8.jpg')
+    }
+</style>
+<header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>Андрей Палтусов </h1>
-                    
-		    <span class="subheading">Учиться, учиться и учиться</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/dynamics-365" title="Dynamics 365">
+                            Dynamics 365
+                        </a>
+                        
+                        <a class="tag" href="/tags/.net-core" title=".Net Core">
+                            .Net Core
+                        </a>
+                        
+                    </div>
+                    <h1>Dynamics 365 connection from .Net Core</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+			Posted by 
+			
+			        &#34;Andrey Paltusov&#34;
+			 
+			on 
+			Monday, July 22, 2019
+                        
+                    </span>
                 </div>
             </div>
         </div>
@@ -153,44 +178,226 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-         	
-
-<p><img src="/img/paltusov-fase.jpg" alt="" /></p>
-
-<h2 id="интересы">Интересы</h2>
-
+                
+                <header>
+                    <h2>Оглавление</h2>
+                </header>
+                <nav id="TableOfContents">
 <ul>
-<li><p>Разработка на Microsoft .NET Framework</p></li>
-
-<li><p>Решения на базе <a href="https://docs.microsoft.com/ru-ru/dynamics365/customer-engagement/">Microsoft Dynamics 365 Customer Engagement</a></p></li>
-
-<li><p>Решения на базе <a href="https://products.office.com/ru-ru/sharepoint/collaboration">Microsoft SharePoint</a></p></li>
-
-<li><p>Сервисы Microsoft Azure</p></li>
-</ul>
-
-<h2 id="образование">Образование</h2>
-
+<li>
 <ul>
-<li><a href="http://www.vka.spb.ru/">Военно-космическая академия имени А.Ф. Можайского</a></li>
+<li><a href="#azure-application-registration">Azure Application Registration</a></li>
+<li><a href="#dynamics-user-permission">Dynamics User Permission</a></li>
+<li><a href="#test-console">Test Console</a></li>
+</ul></li>
 </ul>
+</nav>
+                
+                
 
-<p><img src="/img/MCSA-Web-Applications-2018.png" alt="" /><br />
-<img src="/img/MCSD-App-Builder-2018.png" alt="" /></p>
+<h2 id="azure-application-registration">Azure Application Registration</h2>
 
-<h2 id="достижения">Достижения</h2>
+<p>&nbsp; &nbsp;There is a big problem when you plan to work with Dynamics 365 from .NET Core SDK. SDK is not compatible with .NET Core. Alternative possibility to work with Dynamics 365 is OData service. Here is detail guide how to set up connection with sample code.<BR/></p>
 
-<ul>
-<li><p>Внедрение систем документооборота в нескольких организациях на базе SharePoint 2010.</p></li>
+<p>First you need to register new Application in Azure.
+<img src="/img/2019-07-22-dynamics-365-net-core/1.png" alt="" />
+<img src="/img/2019-07-22-dynamics-365-net-core/2.png" alt="" /></p>
 
-<li><p>Внедрение системы управление заявками на закупку материалов на производстве с применением Microsoft CRM 4.</p></li>
+<p>Then assign Dynamics 365 service access
+<img src="/img/2019-07-22-dynamics-365-net-core/3.png" alt="" />
+<img src="/img/2019-07-22-dynamics-365-net-core/4.png" alt="" /></p>
 
-<li><p>Внедрение системы бюджетирования на базе SharePoint 2010, Microsoft BI, MS SQL Reporting Services и MS SQL Integration Services.</p></li>
+<p>Generate access token.
+<img src="/img/2019-07-22-dynamics-365-net-core/5.png" alt="" />
+<img src="/img/2019-07-22-dynamics-365-net-core/6.png" alt="" /></p>
 
-<li><p>Внедрение системы учета профсоюзных взносов на базе Microsoft CRM 2015.</p></li>
+<p>Don’t forget to copy and save key!</p>
 
-<li><p>Разработка бизнес-приложений на базе ASP.NET, .NET Core, Angular 2+, PowerApps</p></li>
-</ul>
+<h2 id="dynamics-user-permission">Dynamics User Permission</h2>
+
+<p>&nbsp; &nbsp;Now you need to create Azure Application delegated user in Dynamics 365. First copy Azure Application ID.
+<img src="/img/2019-07-22-dynamics-365-net-core/7.png" alt="" /></p>
+
+<p>Now go to the Dynamics 365 application users and Create new one.
+<img src="/img/2019-07-22-dynamics-365-net-core/8.png" alt="" /></p>
+
+<p>Change form selector to &ldquo;Application User&rdquo;.
+<img src="/img/2019-07-22-dynamics-365-net-core/9.png" alt="" /></p>
+
+<p>Input &ldquo;Application ID&rdquo; and user information
+<img src="/img/2019-07-22-dynamics-365-net-core/10.png" alt="" /></p>
+
+<p>Save it and don’t forget to assign roles in CRM
+<img src="/img/2019-07-22-dynamics-365-net-core/11.png" alt="" /></p>
+
+<h2 id="test-console">Test Console</h2>
+
+<p>&nbsp; &nbsp;Now is time to test OData connection. Code snipped from <a href="https://github.com/jlattimer/CrmWebApiCSharp">this</a> resource. To authorize in Azure we need authority endpoint.</p>
+
+<p><img src="/img/2019-07-22-dynamics-365-net-core/12.png" alt="" /></p>
+
+<p>Ready to create .Net Core Sample Console
+<img src="/img/2019-07-22-dynamics-365-net-core/13.png" alt="" /></p>
+
+<p>Here is code sample:</p>
+
+<pre><code>using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+namespace D365.REST
+{
+    class Program
+    {
+        //Azure Application / Client ID
+        private const string ClientId = &quot;xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx&quot;;
+        //Azure Application Client Key / Secret
+        private const string ClientSecret = &quot;xxxxxxxxxxx&quot;;
+
+        //Resource / CRM Url
+        private const string Resource = &quot;https://xxxxx.crm4.dynamics.com&quot;;
+
+        //Guid is your Azure Active Directory Tenant Id
+        private const string Authority = &quot;https://login.microsoftonline.com/ xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx /oauth2/token&quot;;
+
+        //private static AuthenticationResult _authResult;
+        private static string _accessToken;
+
+        static void Main(string[] args)
+        {
+            var getTokenTask = Task.Run(async () =&gt; await GetToken());
+            Task.WaitAll(getTokenTask);
+
+            if (getTokenTask.Result == null)
+                return;
+
+            //Deserialize the token response to get the access token
+            TokenResponse tokenResponse = JsonConvert.DeserializeObject&lt;TokenResponse&gt;(getTokenTask.Result);
+            _accessToken = tokenResponse.access_token;
+
+            Task.WaitAll(Task.Run(async () =&gt; await DoWork()));
+        }
+
+        private static async Task DoWork()
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                httpClient.BaseAddress = new Uri(Resource);
+                httpClient.Timeout = new TimeSpan(0, 2, 0);
+                httpClient.DefaultRequestHeaders.Add(&quot;OData-MaxVersion&quot;, &quot;4.0&quot;);
+                httpClient.DefaultRequestHeaders.Add(&quot;OData-Version&quot;, &quot;4.0&quot;);
+                httpClient.DefaultRequestHeaders.Accept.Add(
+                    new MediaTypeWithQualityHeaderValue(&quot;application/json&quot;));
+                httpClient.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue(&quot;Bearer&quot;, _accessToken);
+
+                //Unbound Function
+                HttpResponseMessage whoAmIResponse =
+                    await httpClient.GetAsync(&quot;api/data/v8.2/WhoAmI&quot;);
+                Guid userId;
+                if (whoAmIResponse.IsSuccessStatusCode)
+                {
+                    JObject jWhoAmIResponse =
+                        JObject.Parse(whoAmIResponse.Content.ReadAsStringAsync().Result);
+                    userId = (Guid)jWhoAmIResponse[&quot;UserId&quot;];
+                    Console.WriteLine(&quot;WhoAmI &quot; + userId);
+                }
+                else
+                    return;
+
+                //Retrieve 
+                HttpResponseMessage retrieveResponse =
+                    await httpClient.GetAsync(&quot;api/data/v8.2/systemusers(&quot; +
+                                              userId + &quot;)?$select=fullname&quot;);
+                if (retrieveResponse.IsSuccessStatusCode)
+                {
+                    JObject jRetrieveResponse =
+                        JObject.Parse(retrieveResponse.Content.ReadAsStringAsync().Result);
+                    string fullname = jRetrieveResponse[&quot;fullname&quot;].ToString();
+                    Console.WriteLine(&quot;Fullname &quot; + fullname);
+                }
+                else
+                    return;
+
+                Console.ReadLine();
+            }
+        }
+
+        private static async Task&lt;string&gt; GetToken()
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                var formContent = new FormUrlEncodedContent(new[]
+                {
+                    new KeyValuePair&lt;string, string&gt;(&quot;resource&quot;, Resource),
+                    new KeyValuePair&lt;string, string&gt;(&quot;client_id&quot;, ClientId),
+                    new KeyValuePair&lt;string, string&gt;(&quot;client_secret&quot;, ClientSecret),
+                    new KeyValuePair&lt;string, string&gt;(&quot;grant_type&quot;, &quot;client_credentials&quot;)
+                });
+
+                HttpResponseMessage response = await httpClient.PostAsync(Authority, formContent);
+
+                return !response.IsSuccessStatusCode ? null
+                    : response.Content.ReadAsStringAsync().Result;
+            }
+        }
+    }
+}
+
+namespace D365.REST
+{
+    [DataContract]
+    public class TokenResponse
+    {
+        [DataMember]
+        public string token_type { get; set; }
+        [DataMember]
+        public string expires_in { get; set; }
+        [DataMember]
+        public string ext_expires_in { get; set; }
+        [DataMember]
+        public string expires_on { get; set; }
+        [DataMember]
+        public string not_before { get; set; }
+        [DataMember]
+        public string resource { get; set; }
+        [DataMember]
+        public string access_token { get; set; }
+    }
+}
+</code></pre>
+
+<p>Profit!</p>
+
+
+                
+                
+<div class="entry-shang text-center">
+    
+	    <p>--Андрей Палтусов--</p>
+	
+	
+</div>
+
+
+<script type="text/javascript" src="/js/reward.js"></script>
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2019/07/18/powerapps-1c-custom-connector-2/" data-toggle="tooltip" data-placement="top" title="PowerApps Подключение к 1С часть 2">&larr;
+                            Предыдущая статья</a>
+                    </li>
+                    
+                    
+                </ul>
 
                 
 <div id="disqus-comment"></div>
@@ -239,7 +446,7 @@
                         
                         
                         <a href="/tags/powerapps" title="PowerApps">
-                        PowerApps
+                            PowerApps
                         </a>
                         
                         
@@ -333,7 +540,7 @@
                     
                 </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; Андрей Палтусов , 0001
+                    Copyright &copy; Андрей Палтусов , 2019
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
                     <iframe
