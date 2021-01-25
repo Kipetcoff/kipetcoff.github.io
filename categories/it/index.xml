@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>IT on Андрей Палтусов</title>
@@ -6,10 +6,15 @@
     <description>Recent content in IT on Андрей Палтусов</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 22 Jul 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://paltusov.pro/categories/it/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Mon, 25 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://paltusov.pro/categories/it/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Power Automate Anaplan integration Part 1</title>
+      <link>http://paltusov.pro/2021/01/25/anaplan-authentication/</link>
+      <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://paltusov.pro/2021/01/25/anaplan-authentication/</guid>
+      <description>Anaplan token  To work with Anaplan, you first need to get an authorization token. Authorization documentation is described here. You can get a token in two ways: by passing a username and password, using certificates. The first method is not very suitable for building integration processes, so I used certificates that can be requested from Anaplan administratorsTo receive a token using a certificate, you need to send a request with parameters to the address https://auth.</description>
+    </item>
     
     <item>
       <title>Dynamics 365 connection from .Net Core</title>
@@ -17,8 +22,7 @@
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>http://paltusov.pro/2019/07/22/dynamics-365-net-core/</guid>
-      <description>Azure Application Registration &amp;nbsp; &amp;nbsp;There is a big problem when you plan to work with Dynamics 365 from .NET Core SDK. SDK is not compatible with .NET Core. Alternative possibility to work with Dynamics 365 is OData service. Here is detail guide how to set up connection with sample code.
-First you need to register new Application in Azure. Then assign Dynamics 365 service access Generate access token. Don’t forget to copy and save key!</description>
+      <description>Azure Application Registration  There is a big problem when you plan to work with Dynamics 365 from .NET Core SDK. SDK is not compatible with .NET Core. Alternative possibility to work with Dynamics 365 is OData service. Here is detail guide how to set up connection with sample code.First you need to register new Application in Azure. Then assign Dynamics 365 service access Generate access token. Don’t forget to copy and save key!</description>
     </item>
     
     <item>
@@ -27,7 +31,7 @@ First you need to register new Application in Azure. Then assign Dynamics 365 se
       <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>http://paltusov.pro/2019/07/18/powerapps-1c-custom-connector-2/</guid>
-      <description>Чтение списка &amp;nbsp; &amp;nbsp;В этой статье я покажу как работать с пользовательскими подключениями в PowerApps, в частности с подключением к 1C. Настройку такого подключения я рассматривал в предыдущей статье. Подробно рассматривать все шаги создания приложения я не буду. В интернете вы можете достаточное количество обучающего материала на эту тему или же посмотреть мой пример. Я рассмотрю лишь ключевые действия, которые могут вызвать затруднения в реализации Для начала попробуем прочитать список документов, в нашем примере это будут авансовые отчеты.</description>
+      <description>Чтение списка  В этой статье я покажу как работать с пользовательскими подключениями в PowerApps, в частности с подключением к 1C. Настройку такого подключения я рассматривал в предыдущей статье. Подробно рассматривать все шаги создания приложения я не буду. В интернете вы можете достаточное количество обучающего материала на эту тему или же посмотреть мой пример. Я рассмотрю лишь ключевые действия, которые могут вызвать затруднения в реализации Для начала попробуем прочитать список документов, в нашем примере это будут авансовые отчеты.</description>
     </item>
     
     <item>
@@ -36,7 +40,7 @@ First you need to register new Application in Azure. Then assign Dynamics 365 se
       <pubDate>Sat, 13 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>http://paltusov.pro/2019/07/13/powerapps-1c-custom-connector/</guid>
-      <description>Идея &amp;nbsp; &amp;nbsp;Мне давно хотелось попробовать в PowerApps создать пользовательские подключения для тех случаев, когда стандартных источников данных недостаточно. Первое, что пришло мне на ум из сторонних систем, работающих с OData, был 1C. Это достаточно распространенная система в России и было бы полезно иметь возможность подключаться к ней из облачных сервисов Microsoft. В компании AWARA-IT сильная практика 1С, поэтому мы без труда смогли развернуть тестовую среду для проверки работы такой архитектуры.</description>
+      <description>Идея  Мне давно хотелось попробовать в PowerApps создать пользовательские подключения для тех случаев, когда стандартных источников данных недостаточно. Первое, что пришло мне на ум из сторонних систем, работающих с OData, был 1C. Это достаточно распространенная система в России и было бы полезно иметь возможность подключаться к ней из облачных сервисов Microsoft. В компании AWARA-IT сильная практика 1С, поэтому мы без труда смогли развернуть тестовую среду для проверки работы такой архитектуры.</description>
     </item>
     
     <item>
@@ -45,9 +49,8 @@ First you need to register new Application in Azure. Then assign Dynamics 365 se
       <pubDate>Sun, 19 May 2019 00:00:00 +0000</pubDate>
       
       <guid>http://paltusov.pro/2019/05/19/co-authoring-power-apps-datasource/</guid>
-      <description>&amp;nbsp; &amp;nbsp;Have you ever seen several users working with the same data in the same time? This is typical scenario for all client-server applications and for PowerApps too. In the article below I would like to describe one of the possible solutions for coauthoring in PowerApps.
-&amp;nbsp; &amp;nbsp; Let’s create PowerApps template based on the custom SharePoint list.
-&amp;nbsp; &amp;nbsp;Usually the problem appears when users edit same data in the same time.</description>
+      <description>Have you ever seen several users working with the same data in the same time? This is typical scenario for all client-server applications and for PowerApps too. In the article below I would like to describe one of the possible solutions for coauthoring in PowerApps. Let’s create PowerApps template based on the custom SharePoint list.
+ Usually the problem appears when users edit same data in the same time. Because of that, I will describe an idea only for data edition screen.</description>
     </item>
     
     <item>
@@ -56,8 +59,7 @@ First you need to register new Application in Azure. Then assign Dynamics 365 se
       <pubDate>Sat, 26 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>http://paltusov.pro/2019/01/26/powerapps-expense-report/</guid>
-      <description>Предисловие &amp;nbsp; &amp;nbsp;В этой статье хотелось бы поделиться опытом применения PowerApps совместно с Dynamics 365 Customer Engagement (CRM) в компании AWARA-IT. В нашей компании всегда приветствуется проявление инициативы по новым, интересным направлениям в сфере IT. PowerApps на мой взгляд является одним из таких. Так же достаточно насущно стоит вопрос оперативности и простоты заполнения авансовых отчетов сотрудниками, которые часто ездят в командировки.
-&amp;nbsp; &amp;nbsp; Начнем с того что такое PowerApps? Это инструмент для создания бизнес-приложений для веба и мобильных платформ.</description>
+      <description>Предисловие  В этой статье хотелось бы поделиться опытом применения PowerApps совместно с Dynamics 365 Customer Engagement (CRM) в компании AWARA-IT. В нашей компании всегда приветствуется проявление инициативы по новым, интересным направлениям в сфере IT. PowerApps на мой взгляд является одним из таких. Так же достаточно насущно стоит вопрос оперативности и простоты заполнения авансовых отчетов сотрудниками, которые часто ездят в командировки. Начнем с того что такое PowerApps? Это инструмент для создания бизнес-приложений для веба и мобильных платформ.</description>
     </item>
     
   </channel>

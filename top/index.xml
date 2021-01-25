@@ -1,28 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tops on Андрей Палтусов</title>
     <link>http://paltusov.pro/top/</link>
     <description>Recent content in Tops on Андрей Палтусов</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    
-	<atom:link href="http://paltusov.pro/top/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>en-us</language><atom:link href="http://paltusov.pro/top/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
       <link>http://paltusov.pro/top/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://paltusov.pro/top/about/</guid>
-      <description>Интересы  Разработка на Microsoft .NET Framework
- Решения на базе Microsoft Dynamics 365 Customer Engagement
- Решения на базе Microsoft SharePoint
- Сервисы Microsoft Azure
-  Образование  Военно-космическая академия имени А.Ф. Можайского  Достижения  Внедрение систем документооборота в нескольких организациях на базе SharePoint 2010.
- Внедрение системы управление заявками на закупку материалов на производстве с применением Microsoft CRM 4.
- Внедрение системы бюджетирования на базе SharePoint 2010, Microsoft BI, MS SQL Reporting Services и MS SQL Integration Services.</description>
+      <description>Интересы   Разработка на Microsoft .NET Framework
+  Решения на базе Microsoft Dynamics 365 Customer Engagement
+  Решения на базе Microsoft SharePoint
+  Сервисы Microsoft Azure
+  Образование  Военно-космическая академия имени А.Ф. Можайского  Достижения   Внедрение систем документооборота в нескольких организациях на базе SharePoint 2010.
+  Внедрение системы управление заявками на закупку материалов на производстве с применением Microsoft CRM 4.
+  Внедрение системы бюджетирования на базе SharePoint 2010, Microsoft BI, MS SQL Reporting Services и MS SQL Integration Services.</description>
     </item>
     
     <item>
@@ -31,7 +27,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://paltusov.pro/top/contacts/</guid>
-      <description> Контакты  paltandrey@gmail.com +7 (911) 284-79-35 @Kipetcoff Компания AWARA-IT, наб.реки Мойки 37А, Санкт-Петербург, Российская Федерация  </description>
+      <description>Контакты  paltandrey@gmail.com +7 (911) 284-79-35 @Kipetcoff Компания AWARA-IT, наб.реки Мойки 37А, Санкт-Петербург, Российская Федерация  </description>
     </item>
     
   </channel>

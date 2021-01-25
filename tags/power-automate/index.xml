@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Power Automate on Андрей Палтусов</title>
+    <link>http://paltusov.pro/tags/power-automate/</link>
+    <description>Recent content in Power Automate on Андрей Палтусов</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 25 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://paltusov.pro/tags/power-automate/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Power Automate Anaplan integration Part 1</title>
+      <link>http://paltusov.pro/2021/01/25/anaplan-authentication/</link>
+      <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://paltusov.pro/2021/01/25/anaplan-authentication/</guid>
+      <description>Anaplan token  To work with Anaplan, you first need to get an authorization token. Authorization documentation is described here. You can get a token in two ways: by passing a username and password, using certificates. The first method is not very suitable for building integration processes, so I used certificates that can be requested from Anaplan administratorsTo receive a token using a certificate, you need to send a request with parameters to the address https://auth.</description>
+    </item>
+    
+  </channel>
+</rss>

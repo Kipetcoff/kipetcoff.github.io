@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Андрей Палтусов</title>
@@ -6,17 +6,31 @@
     <description>Recent content in Tags on Андрей Палтусов</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 22 Jul 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://paltusov.pro/tags/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Mon, 25 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://paltusov.pro/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Anaplan</title>
+      <link>http://paltusov.pro/tags/anaplan/</link>
+      <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://paltusov.pro/tags/anaplan/</guid>
+      <description></description>
+    </item>
     
     <item>
-      <title>.Net Core</title>
-      <link>http://paltusov.pro/tags/.net-core/</link>
+      <title>Power Automate</title>
+      <link>http://paltusov.pro/tags/power-automate/</link>
+      <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://paltusov.pro/tags/power-automate/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dot Net Core</title>
+      <link>http://paltusov.pro/tags/dot-net-core/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://paltusov.pro/tags/.net-core/</guid>
+      <guid>http://paltusov.pro/tags/dot-net-core/</guid>
       <description></description>
     </item>
     

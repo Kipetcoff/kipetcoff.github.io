@@ -73,7 +73,7 @@
                     </li>
                     
                     <li>
-                        <a href="/categories/it">IT</a>
+                        <a href="/categories/it">it</a>
                     </li>
                     
                     
@@ -176,40 +176,23 @@
 
                 
                 
-                <p>&nbsp; &nbsp;Have you ever seen several users working with the same data in the same time? This is typical scenario for all client-server applications and for PowerApps too. In the article below I would like to describe one of the possible solutions for coauthoring in PowerApps.<BR></p>
-
-<p>&nbsp; &nbsp; Let’s create PowerApps template based on the custom SharePoint list.</p>
-
-<p><img src="/img/2019-05-19-powerapps-timer/1.png" alt="" /></p>
-
-<p><img src="/img/2019-05-19-powerapps-timer/2.png" alt="" /></p>
-
-<p>&nbsp; &nbsp;Usually the problem appears when users edit same data in the same time. Because of that, I will describe an idea only for data edition screen.</p>
-
-<p>&nbsp; &nbsp;First, we need to redefine the source for editing form, it will be selected grid row as new variable.</p>
-
-<p><img src="/img/2019-05-19-powerapps-timer/3.png" alt="" /></p>
-
-<p><img src="/img/2019-05-19-powerapps-timer/4.png" alt="" /></p>
-
+                <p>   Have you ever seen several users working with the same data in the same time? This is typical scenario for all client-server applications and for PowerApps too. In the article below I would like to describe one of the possible solutions for coauthoring in PowerApps.<!-- raw HTML omitted --></p>
+<p>    Let’s create PowerApps template based on the custom SharePoint list.</p>
+<p><img src="/img/2019-05-19-powerapps-timer/1.png" alt=""></p>
+<p><img src="/img/2019-05-19-powerapps-timer/2.png" alt=""></p>
+<p>   Usually the problem appears when users edit same data in the same time. Because of that, I will describe an idea only for data edition screen.</p>
+<p>   First, we need to redefine the source for editing form, it will be selected grid row as new variable.</p>
+<p><img src="/img/2019-05-19-powerapps-timer/3.png" alt=""></p>
+<p><img src="/img/2019-05-19-powerapps-timer/4.png" alt=""></p>
 <p>The idea is to compare from time to time last updated timestamp on the server side and client side. For this purpose, I will use <strong>Timer</strong> component.</p>
-
-<p><img src="/img/2019-05-19-powerapps-timer/5.png" alt="" /></p>
-
+<p><img src="/img/2019-05-19-powerapps-timer/5.png" alt=""></p>
 <p>Timer will be triggered by opening the screen.</p>
-
-<p><img src="/img/2019-05-19-powerapps-timer/6.png" alt="" /></p>
-
-<p><img src="/img/2019-05-19-powerapps-timer/7.png" alt="" /></p>
-
+<p><img src="/img/2019-05-19-powerapps-timer/6.png" alt=""></p>
+<p><img src="/img/2019-05-19-powerapps-timer/7.png" alt=""></p>
 <p>To avoid a situation where the current value will be replaced by the server value, we will create a dialog box.</p>
-
-<p><img src="/img/2019-05-19-powerapps-timer/8.png" alt="" /></p>
-
+<p><img src="/img/2019-05-19-powerapps-timer/8.png" alt=""></p>
 <p>Now let&rsquo;s define a timer expiry event.</p>
-
-<p><img src="/img/2019-05-19-powerapps-timer/14.png" alt="" /></p>
-
+<p><img src="/img/2019-05-19-powerapps-timer/14.png" alt=""></p>
 <pre><code>UpdateContext({varTimerStart: false});//Switch off timer
 Refresh(Test_PowerAppsTimer);//Refrech sharepoint list datasource
 UpdateContext(//Get row from the server
@@ -226,31 +209,19 @@ If(//If the form mode is editing, and the server change date is greater than the
     Reset(Timer1_1);//Else reset timer and start it once again
     UpdateContext({varTimerStart: true})
 );
-</code></pre>
-
-<p>Then define the visibility property of the dialog.</p>
-
-<p><img src="/img/2019-05-19-powerapps-timer/9.png" alt="" /></p>
-
+</code></pre><p>Then define the visibility property of the dialog.</p>
+<p><img src="/img/2019-05-19-powerapps-timer/9.png" alt=""></p>
 <p>Let’s define button events:</p>
-
-<p><img src="/img/2019-05-19-powerapps-timer/10.png" alt="" /></p>
-
+<p><img src="/img/2019-05-19-powerapps-timer/10.png" alt=""></p>
 <pre><code>UpdateContext({varSelectedRow: varUpdatedRow});//Update client row variable
 UpdateContext({updateDialogVisible: false});//Hide dialog
 Reset(Timer1_1);//Reset timer
 UpdateContext({varTimerStart: true})//Start timer
-</code></pre>
-
-<p><img src="/img/2019-05-19-powerapps-timer/11.png" alt="" /></p>
-
+</code></pre><p><img src="/img/2019-05-19-powerapps-timer/11.png" alt=""></p>
 <p>Finally, we need to save the form values in the SharePoint list and hide the timer.</p>
-
-<p><img src="/img/2019-05-19-powerapps-timer/12.png" alt="" /></p>
-
-<p><img src="/img/2019-05-19-powerapps-timer/13.png" alt="" /></p>
-
-<p>&nbsp; &nbsp;Now, if someone changes SharePoint data during the editing process, the user will receive confirmation of the replacement of the current form data with the SharePoint server data from another user, after which he may decide to leave the current values or replace with updates from the server.</p>
+<p><img src="/img/2019-05-19-powerapps-timer/12.png" alt=""></p>
+<p><img src="/img/2019-05-19-powerapps-timer/13.png" alt=""></p>
+<p>   Now, if someone changes SharePoint data during the editing process, the user will receive confirmation of the replacement of the current form data with the SharePoint server data from another user, after which he may decide to leave the current values or replace with updates from the server.</p>
 
 
                 
@@ -329,8 +300,12 @@ UpdateContext({varTimerStart: true})//Start timer
                         
                         
                         
-                        <a href="/tags/powerapps" title="PowerApps">
-                            PowerApps
+                        
+                        
+                        
+                        
+                        <a href="/tags/powerapps" title="powerapps">
+                            powerapps
                         </a>
                         
                         

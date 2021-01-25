@@ -73,7 +73,7 @@
                     </li>
                     
                     <li>
-                        <a href="/categories/it">IT</a>
+                        <a href="/categories/it">it</a>
                     </li>
                     
                     
@@ -179,332 +179,204 @@
                     <h2>Оглавление</h2>
                 </header>
                 <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#предисловие">Предисловие</a></li>
-<li><a href="#авансовые-отчеты">Авансовые отчеты</a></li>
-<li><a href="#структура-данных">Структура данных</a>
-<ul>
-<li><a href="#клиент-awr-client">Клиент (awr_client)</a></li>
-<li><a href="#проект-awr-project">Проект (awr_project)</a></li>
-<li><a href="#авансовый-отчет-awr-expensereport">Авансовый отчет (awr_expensereport)</a></li>
-<li><a href="#строка-авансового-отчета-awr-expensereportrow">Строка авансового отчета (awr_expensereportrow)</a></li>
-</ul></li>
-<li><a href="#списки-авансовых-отчетов-отчетов">Списки авансовых отчетов (Отчетов)</a></li>
-<li><a href="#форма-просмотра-отчета">Форма просмотра отчета</a></li>
-<li><a href="#форма-редактирования">Форма редактирования</a></li>
-<li><a href="#форма-прикрепления-файлов">Форма прикрепления файлов</a></li>
-<li><a href="#строки-авансового-отчета">Строки авансового отчета</a></li>
-<li><a href="#отправка-в-бухгалтерию">Отправка в бухгалтерию</a></li>
-<li><a href="#итог">Итог</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#предисловие">Предисловие</a></li>
+    <li><a href="#авансовые-отчеты">Авансовые отчеты</a></li>
+    <li><a href="#структура-данных">Структура данных</a>
+      <ul>
+        <li><a href="#клиент-awr_client">Клиент (awr_client)</a></li>
+        <li><a href="#проект-awr_project">Проект (awr_project)</a></li>
+        <li><a href="#авансовый-отчет-awr_expensereport">Авансовый отчет (awr_expensereport)</a></li>
+        <li><a href="#строка-авансового-отчета-awr_expensereportrow">Строка авансового отчета (awr_expensereportrow)</a></li>
+      </ul>
+    </li>
+    <li><a href="#списки-авансовых-отчетов-отчетов">Списки авансовых отчетов (Отчетов)</a></li>
+    <li><a href="#форма-просмотра-отчета">Форма просмотра отчета</a></li>
+    <li><a href="#форма-редактирования">Форма редактирования</a></li>
+    <li><a href="#форма-прикрепления-файлов">Форма прикрепления файлов</a></li>
+    <li><a href="#строки-авансового-отчета">Строки авансового отчета</a></li>
+    <li><a href="#отправка-в-бухгалтерию">Отправка в бухгалтерию</a></li>
+    <li><a href="#итог">Итог</a></li>
+  </ul>
 </nav>
                 
-                
-
-<h2 id="предисловие">Предисловие</h2>
-
-<p>&nbsp; &nbsp;В этой статье хотелось бы поделиться опытом применения PowerApps совместно с Dynamics 365 Customer Engagement (CRM) в компании <a href="http://www.awara-it.com/">AWARA-IT</a>. В нашей компании всегда приветствуется проявление инициативы по новым, интересным направлениям в сфере IT. PowerApps на мой взгляд является одним из таких. Так же достаточно насущно стоит вопрос оперативности и простоты заполнения авансовых отчетов сотрудниками, которые часто ездят в командировки.<BR></p>
-
-<p>&nbsp; &nbsp; Начнем с того что такое <a href="https://powerapps.microsoft.com/ru-ru/">PowerApps</a>? Это инструмент для создания бизнес-приложений для веба и мобильных платформ. Подразумевается, что приложения будут тесно интегрироваться с облачными службами Microsoft и Office 365. Готовое приложение можно открывать по ссылке в браузере или же через специальное приложение на <a href="https://play.google.com/store/apps/details?id=com.microsoft.msapps&amp;hl=en_US">Android</a>  или <a href="https://itunes.apple.com/ru/app/powerapps/id1047318566?mt=8">IOS</a>.
+                <h2 id="предисловие">Предисловие</h2>
+<p>   В этой статье хотелось бы поделиться опытом применения PowerApps совместно с Dynamics 365 Customer Engagement (CRM) в компании <a href="http://www.awara-it.com/">AWARA-IT</a>. В нашей компании всегда приветствуется проявление инициативы по новым, интересным направлениям в сфере IT. PowerApps на мой взгляд является одним из таких. Так же достаточно насущно стоит вопрос оперативности и простоты заполнения авансовых отчетов сотрудниками, которые часто ездят в командировки.<!-- raw HTML omitted --></p>
+<p>    Начнем с того что такое <a href="https://powerapps.microsoft.com/ru-ru/">PowerApps</a>? Это инструмент для создания бизнес-приложений для веба и мобильных платформ. Подразумевается, что приложения будут тесно интегрироваться с облачными службами Microsoft и Office 365. Готовое приложение можно открывать по ссылке в браузере или же через специальное приложение на <a href="https://play.google.com/store/apps/details?id=com.microsoft.msapps&amp;hl=en_US">Android</a>  или <a href="https://itunes.apple.com/ru/app/powerapps/id1047318566?mt=8">IOS</a>.
 Когда это полезно?</p>
-
 <ol>
 <li>Когда вы хотите создать бизнес приложение, которое использует несколько источников данных (SharePoint Online, SQL Azure, Flow, Dynamics 365).</li>
 <li>Когда нет жестких требований к красоте интерфейса и в приоритете функциональность. Хотя возможность редактирования стилей так же доступна.</li>
 <li>Когда у вас есть подписка на Office 365.</li>
 <li>Когда некому программировать под мобильные платформы и хочется получить готовый результат в короткие сроки.</li>
-<li>Если вы хотите сэкономить, то можно построить решение на базе Common Data Services и PowerApps. При этом доступ к исходным системам необязателен и можно сэкономить на лицензиях.<BR></li>
+<li>Если вы хотите сэкономить, то можно построить решение на базе Common Data Services и PowerApps. При этом доступ к исходным системам необязателен и можно сэкономить на лицензиях.<!-- raw HTML omitted --></li>
 </ol>
-
-<p>&nbsp; &nbsp;Мне удалось создать достаточно функциональное приложение по управлению авансовыми отчетами примерно 3 недели, уделяя этому примерно 3 часа в день, с учетом недели обучения на YouTube каналах. Мне достаточно было нескольких уроков на <a href="https://www.youtube.com/watch?v=CubdnBklOzg&amp;list=PLcwrIWK7WBcRyFBAFeC-Ws8kJYAGTc8Qi">этом</a> канале. Если есть трудности, то можно задать вопрос на <a href="https://powerusers.microsoft.com/t5/PowerApps-Community/ct-p/PowerApps1">форуме</a>. Отвечают достаточно оперативно.<BR></p>
-
-<p>&nbsp; &nbsp;Поскольку ресурсов для обучения предостаточно, то я не буду описывать каждый шаг в создании приложения, а укажу на ключевые моменты в создании приложения, которые вызвали у меня затруднения. За простоту разработки приложения приходится платить слабой информативностью ошибок. Иногда приходилось долго подбирать правильное поле для сохранения или отображения значений. И так поехали.</p>
-
+<p>   Мне удалось создать достаточно функциональное приложение по управлению авансовыми отчетами примерно 3 недели, уделяя этому примерно 3 часа в день, с учетом недели обучения на YouTube каналах. Мне достаточно было нескольких уроков на <a href="https://www.youtube.com/watch?v=CubdnBklOzg&amp;list=PLcwrIWK7WBcRyFBAFeC-Ws8kJYAGTc8Qi">этом</a> канале. Если есть трудности, то можно задать вопрос на <a href="https://powerusers.microsoft.com/t5/PowerApps-Community/ct-p/PowerApps1">форуме</a>. Отвечают достаточно оперативно.<!-- raw HTML omitted --></p>
+<p>   Поскольку ресурсов для обучения предостаточно, то я не буду описывать каждый шаг в создании приложения, а укажу на ключевые моменты в создании приложения, которые вызвали у меня затруднения. За простоту разработки приложения приходится платить слабой информативностью ошибок. Иногда приходилось долго подбирать правильное поле для сохранения или отображения значений. И так поехали.</p>
 <h2 id="авансовые-отчеты">Авансовые отчеты</h2>
-
-<p>&nbsp; &nbsp;Суть приложения в том, чтобы сотрудники могли создавать заявки на командировку, заносить расходы в процессе командировки и прикреплять фотографии чеков. Заполненный авансовый отчет отправлять в бухгалтерию.<BR></p>
-
-<p>&nbsp; &nbsp;Приложение будет адаптировано для мобильного приложения. В качестве хранилища будет использоваться облачная версия Dynamics 365 Customer Engagement (CRM). Рассылки уведомлений я не будут описывать в этой статье, лишь добавлю ссылки на те методы, которые использовал для формирования писем с вложениями.</p>
-
+<p>   Суть приложения в том, чтобы сотрудники могли создавать заявки на командировку, заносить расходы в процессе командировки и прикреплять фотографии чеков. Заполненный авансовый отчет отправлять в бухгалтерию.<!-- raw HTML omitted --></p>
+<p>   Приложение будет адаптировано для мобильного приложения. В качестве хранилища будет использоваться облачная версия Dynamics 365 Customer Engagement (CRM). Рассылки уведомлений я не будут описывать в этой статье, лишь добавлю ссылки на те методы, которые использовал для формирования писем с вложениями.</p>
 <h2 id="структура-данных">Структура данных</h2>
-
 <p>Схематично структуру данных можно представить в виде следующей схемы.</p>
-
-<p><img src="/img/2019-01-26-powerapps-expense-report/1.png" alt="" /></p>
-
+<p><img src="/img/2019-01-26-powerapps-expense-report/1.png" alt=""></p>
 <p>Для построения схемы пользовался <a href="https://www.dbdesigner.net/">этим</a>.
 В сущностях CRM это выглядит следующим образом. Несущественные поля упускаю.</p>
-
-<h3 id="клиент-awr-client">Клиент (awr_client)</h3>
-
-<p><img src="/img/2019-01-26-powerapps-expense-report/2.png" alt="" /></p>
-
-<h3 id="проект-awr-project">Проект (awr_project)</h3>
-
-<p><img src="/img/2019-01-26-powerapps-expense-report/3.png" alt="" /></p>
-
-<h3 id="авансовый-отчет-awr-expensereport">Авансовый отчет (awr_expensereport)</h3>
-
-<p>Включены примечания, к ним будут прикладываться фотографии.<BR>
+<h3 id="клиент-awr_client">Клиент (awr_client)</h3>
+<p><img src="/img/2019-01-26-powerapps-expense-report/2.png" alt=""></p>
+<h3 id="проект-awr_project">Проект (awr_project)</h3>
+<p><img src="/img/2019-01-26-powerapps-expense-report/3.png" alt=""></p>
+<h3 id="авансовый-отчет-awr_expensereport">Авансовый отчет (awr_expensereport)</h3>
+<p>Включены примечания, к ним будут прикладываться фотографии.<!-- raw HTML omitted --> 
 Поле awr_name расширено до 450 символов
-<img src="/img/2019-01-26-powerapps-expense-report/4.png" alt="" /></p>
-
-<h3 id="строка-авансового-отчета-awr-expensereportrow">Строка авансового отчета (awr_expensereportrow)</h3>
-
-<p>Включены примечания, к ним будут прикладываться фотографии.<BR>
+<img src="/img/2019-01-26-powerapps-expense-report/4.png" alt=""></p>
+<h3 id="строка-авансового-отчета-awr_expensereportrow">Строка авансового отчета (awr_expensereportrow)</h3>
+<p>Включены примечания, к ним будут прикладываться фотографии.<!-- raw HTML omitted --> 
 Поле awr_name расширено до 450 символов
-<img src="/img/2019-01-26-powerapps-expense-report/5.png" alt="" /></p>
-
+<img src="/img/2019-01-26-powerapps-expense-report/5.png" alt=""></p>
 <h2 id="списки-авансовых-отчетов-отчетов">Списки авансовых отчетов (Отчетов)</h2>
-
-<p>&nbsp; &nbsp;Как мы ранее договорились, описывать создание приложения очень подробно я не буду. Если вы пропустили предисловие, то там говорилось о том, что можно быстро научиться создавать PowerApps приложения на YouTube, например <a href="https://www.youtube.com/watch?v=CubdnBklOzg&amp;list=PLcwrIWK7WBcRyFBAFeC-Ws8kJYAGTc8Qi">тут</a>.<BR></p>
-
+<p>   Как мы ранее договорились, описывать создание приложения очень подробно я не буду. Если вы пропустили предисловие, то там говорилось о том, что можно быстро научиться создавать PowerApps приложения на YouTube, например <a href="https://www.youtube.com/watch?v=CubdnBklOzg&amp;list=PLcwrIWK7WBcRyFBAFeC-Ws8kJYAGTc8Qi">тут</a>.<!-- raw HTML omitted --></p>
 <p>Начало создания приложения выглядит так:</p>
-
-<p><img src="/img/2019-01-26-powerapps-expense-report/6.png" alt="" />
-<img src="/img/2019-01-26-powerapps-expense-report/7.png" alt="" />
-<img src="/img/2019-01-26-powerapps-expense-report/8.png" alt="" /></p>
-
+<p><img src="/img/2019-01-26-powerapps-expense-report/6.png" alt="">
+<img src="/img/2019-01-26-powerapps-expense-report/7.png" alt="">
+<img src="/img/2019-01-26-powerapps-expense-report/8.png" alt=""></p>
 <p>Для начала зададим переменные для хранения почты текущего пользователя и статус для выбранного представления. Мы это будем использовать чуть позже. Фокус на базовом экране.</p>
-
-<p><img src="/img/2019-01-26-powerapps-expense-report/9.png" alt="" /></p>
-
+<p><img src="/img/2019-01-26-powerapps-expense-report/9.png" alt=""></p>
 <pre><code>Set(varCurrentUserEmail;ПользователиOffice365.MyProfile().Mail);;
 Set(varSelectedViewStatus;1)
-</code></pre>
-
-<p>Для меня было странно, что переменные создаются в момент присвоения значений, а не перед этим. Я долго искал где их определить. Из-за этой странной логики, иногда переменные ведут себя странно.<BR></p>
-
-<p>Не смотрите на цвета, это я уже раскрашивал списки после отладки.<BR></p>
-
-<p><span style="color:red;"><strong>Важно! Разделители между параметрами и методами зависят от локальных настроек. Подробнее</strong></span> <a href="https://docs.microsoft.com/ru-ru/powerapps/maker/canvas-apps/global-apps">тут</a></p>
-
+</code></pre><p>Для меня было странно, что переменные создаются в момент присвоения значений, а не перед этим. Я долго искал где их определить. Из-за этой странной логики, иногда переменные ведут себя странно.<!-- raw HTML omitted --></p>
+<p>Не смотрите на цвета, это я уже раскрашивал списки после отладки.<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><strong>Важно! Разделители между параметрами и методами зависят от локальных настроек. Подробнее</strong><!-- raw HTML omitted --> <a href="https://docs.microsoft.com/ru-ru/powerapps/maker/canvas-apps/global-apps">тут</a></p>
 <p>Добавим все необходимые источники данных.
-<img src="/img/2019-01-26-powerapps-expense-report/10.png" alt="" /></p>
-
+<img src="/img/2019-01-26-powerapps-expense-report/10.png" alt=""></p>
 <p>Добавим раскрывающийся список с представлениями для списка.</p>
-
-<p><img src="/img/2019-01-26-powerapps-expense-report/11.png" alt="" /></p>
-
+<p><img src="/img/2019-01-26-powerapps-expense-report/11.png" alt=""></p>
 <p>Метод на изменение обновляет значение выбранного статуса
-<img src="/img/2019-01-26-powerapps-expense-report/12.png" alt="" /></p>
-
+<img src="/img/2019-01-26-powerapps-expense-report/12.png" alt=""></p>
 <pre><code>Set(varSelectedViewStatus;Switch(ddListView.Selected.Value;&quot;Все мои авансовые отчеты&quot;;124000000;&quot;Мои черновики&quot;;1))
-</code></pre>
-
-<p>Отфильтруем в зависимости от выбранного представления и по почте текущего пользователя.
-<img src="/img/2019-01-26-powerapps-expense-report/13.png" alt="" /></p>
-
+</code></pre><p>Отфильтруем в зависимости от выбранного представления и по почте текущего пользователя.
+<img src="/img/2019-01-26-powerapps-expense-report/13.png" alt=""></p>
 <p>Сортировка осуществляется по дате создания в обратном порядке, т.е. сначала самые новые.</p>
-
 <pre><code>SortByColumns(Search(Filter('Авансовые отчеты';Сотрудник = varCurrentUserEmail &amp;&amp; ('Причина состояния'=1 || 'Причина состояния'=varSelectedViewStatus)); TextSearchBox1.Text; &quot;awr_name&quot;); &quot;createdon&quot;; If(SortDescending1; Ascending; Descending))
-</code></pre>
-
-<p>Макет я сначала выбрал с 3 значениями, потом просто скопировал еще одно поле и вывел туда значение общей суммы отчета.</p>
-
-<p><img src="/img/2019-01-26-powerapps-expense-report/14.png" alt="" />
-<img src="/img/2019-01-26-powerapps-expense-report/15.png" alt="" /></p>
-
-<p>Можете выбрать любой шаблон, какой захочется.<BR>
+</code></pre><p>Макет я сначала выбрал с 3 значениями, потом просто скопировал еще одно поле и вывел туда значение общей суммы отчета.</p>
+<p><img src="/img/2019-01-26-powerapps-expense-report/14.png" alt="">
+<img src="/img/2019-01-26-powerapps-expense-report/15.png" alt=""></p>
+<p>Можете выбрать любой шаблон, какой захочется.<!-- raw HTML omitted --> 
 Цвет строк отчетов будет зависеть от статуса.</p>
-
-<p><img src="/img/2019-01-26-powerapps-expense-report/16.png" alt="" /></p>
-
-<p>Переход на страницу просмотра определяем следующим образом.<BR>
+<p><img src="/img/2019-01-26-powerapps-expense-report/16.png" alt=""></p>
+<p>Переход на страницу просмотра определяем следующим образом.<!-- raw HTML omitted --> 
 Мы определяем новую переменную, чтобы туда записать выбранный отчет</p>
-
 <pre><code>Navigate(scrnViewExpenseReport; ScreenTransition.None;{selectedExpense:galExpenseList.Selected})
-</code></pre>
-
-<p><img src="/img/2019-01-26-powerapps-expense-report/17.png" alt="" /></p>
-
+</code></pre><p><img src="/img/2019-01-26-powerapps-expense-report/17.png" alt=""></p>
 <h2 id="форма-просмотра-отчета">Форма просмотра отчета</h2>
-
 <p>На самой форме нужно поменять способ получения текста LookUp полей.
-<img src="/img/2019-01-26-powerapps-expense-report/18.png" alt="" /></p>
-
+<img src="/img/2019-01-26-powerapps-expense-report/18.png" alt=""></p>
 <pre><code>LookUp(Клиенты;awr_clientid=ThisItem.Клиент;awr_name)
-</code></pre>
-
-<p><img src="/img/2019-01-26-powerapps-expense-report/19.png" alt="" /></p>
-
+</code></pre><p><img src="/img/2019-01-26-powerapps-expense-report/19.png" alt=""></p>
 <pre><code>LookUp(Проекты;awr_projectid=ThisItem.Проект; awr_name)
-</code></pre>
-
-<p>Определим для начала переход на форму редактирования.</p>
-
-<p><img src="/img/2019-01-26-powerapps-expense-report/20.png" alt="" /></p>
-
+</code></pre><p>Определим для начала переход на форму редактирования.</p>
+<p><img src="/img/2019-01-26-powerapps-expense-report/20.png" alt=""></p>
 <pre><code>EditForm(frmEdit);;Navigate(scrnEditExpenseReport; ScreenTransition.None)
-</code></pre>
-
-<h2 id="форма-редактирования">Форма редактирования</h2>
-
-<p>&nbsp;&nbsp;На форме редактирования самым сложным было настроить LookUp поля, чтобы они сохраняли данные. Что я для этого сделал?<BR></p>
-
-<p>&nbsp;&nbsp;Поменял настройку в приложении. После чего появилась возможность менять типы полей для LookUp значений. Я 2 дня пытался понять почему у меня ничего не меняется как написано в мануалах, пока не поменял это.</p>
-
-<p><img src="/img/2019-01-26-powerapps-expense-report/21.png" alt="" /></p>
-
+</code></pre><h2 id="форма-редактирования">Форма редактирования</h2>
+<p>  На форме редактирования самым сложным было настроить LookUp поля, чтобы они сохраняли данные. Что я для этого сделал?<!-- raw HTML omitted --></p>
+<p>  Поменял настройку в приложении. После чего появилась возможность менять типы полей для LookUp значений. Я 2 дня пытался понять почему у меня ничего не меняется как написано в мануалах, пока не поменял это.</p>
+<p><img src="/img/2019-01-26-powerapps-expense-report/21.png" alt=""></p>
 <p>При добавлении лукап полей важно выбрать именно текстовое поле, в котором показывается Guid. Может можно и как-то по-другому это настроить, но у меня и мануалах так.
-<img src="/img/2019-01-26-powerapps-expense-report/22.png" alt="" />
+<img src="/img/2019-01-26-powerapps-expense-report/22.png" alt="">
 Меняем тип на «Допустимые значения»</p>
-
-<p><img src="/img/2019-01-26-powerapps-expense-report/23.png" alt="" />
+<p><img src="/img/2019-01-26-powerapps-expense-report/23.png" alt="">
 Акцент на выпадающем списке и задаём значения списка.</p>
-
 <pre><code>ShowColumns(Клиенты;&quot;awr_name&quot;;&quot;awr_clientid&quot;)
-</code></pre>
-
-<p><img src="/img/2019-01-26-powerapps-expense-report/24.png" alt="" /></p>
-
+</code></pre><p><img src="/img/2019-01-26-powerapps-expense-report/24.png" alt=""></p>
 <p>Теперь отображаемое текущее значение.
-<img src="/img/2019-01-26-powerapps-expense-report/25.png" alt="" /></p>
-
+<img src="/img/2019-01-26-powerapps-expense-report/25.png" alt=""></p>
 <pre><code>LookUp(Клиенты;awr_clientid=Parent.Default;awr_name)
-</code></pre>
-
-<p>Так же важно указать возвращаемое значение.</p>
-
+</code></pre><p>Так же важно указать возвращаемое значение.</p>
 <pre><code>ddClient.Selected.awr_clientid
-</code></pre>
-
-<p><img src="/img/2019-01-26-powerapps-expense-report/26.png" alt="" /></p>
-
+</code></pre><p><img src="/img/2019-01-26-powerapps-expense-report/26.png" alt=""></p>
 <p>Такие же действия производим с проектами.
-<img src="/img/2019-01-26-powerapps-expense-report/27.png" alt="" /></p>
-
+<img src="/img/2019-01-26-powerapps-expense-report/27.png" alt=""></p>
 <pre><code>ShowColumns(Filter(Проекты; awr_client.awr_clientid=ddClient.Selected.awr_clientid);&quot;awr_name&quot;;&quot;awr_projectid&quot;)
-</code></pre>
-
-<p>Как видите значения фильтруются по выбранному клиенту.
-<img src="/img/2019-01-26-powerapps-expense-report/28.png" alt="" /></p>
-
+</code></pre><p>Как видите значения фильтруются по выбранному клиенту.
+<img src="/img/2019-01-26-powerapps-expense-report/28.png" alt=""></p>
 <pre><code>LookUp(Проекты;awr_projectid=Parent.Default;awr_name)
-</code></pre>
-
-<p><img src="/img/2019-01-26-powerapps-expense-report/29.png" alt="" /></p>
-
+</code></pre><p><img src="/img/2019-01-26-powerapps-expense-report/29.png" alt=""></p>
 <p>Для поля даты начала ставим условие, что если мы создаем новый отчет, то ставить значение текущей даты
-<img src="/img/2019-01-26-powerapps-expense-report/30.png" alt="" /></p>
-
+<img src="/img/2019-01-26-powerapps-expense-report/30.png" alt=""></p>
 <pre><code>If(frmEdit.Mode = FormMode.New; Today(); Parent.Default)
-</code></pre>
-
-<p>Дату окончания поставим больше на 3 дня по-умолчанию.
-<img src="/img/2019-01-26-powerapps-expense-report/31.png" alt="" />
+</code></pre><p>Дату окончания поставим больше на 3 дня по-умолчанию.
+<img src="/img/2019-01-26-powerapps-expense-report/31.png" alt="">
 Кнопка сохранения
-<img src="/img/2019-01-26-powerapps-expense-report/32.png" alt="" />
+<img src="/img/2019-01-26-powerapps-expense-report/32.png" alt="">
 Кнопка отмены
-<img src="/img/2019-01-26-powerapps-expense-report/33.png" alt="" /></p>
-
+<img src="/img/2019-01-26-powerapps-expense-report/33.png" alt=""></p>
 <h2 id="форма-прикрепления-файлов">Форма прикрепления файлов</h2>
-
-<p>&nbsp;&nbsp;Создадим новый экран, где у нас будут прикрепляться фотографии чеков и показываться список уже имеющихся
-<img src="/img/2019-01-26-powerapps-expense-report/34.png" alt="" />
+<p>  Создадим новый экран, где у нас будут прикрепляться фотографии чеков и показываться список уже имеющихся
+<img src="/img/2019-01-26-powerapps-expense-report/34.png" alt="">
 Создадим экран с камерой
-<img src="/img/2019-01-26-powerapps-expense-report/35.png" alt="" />
+<img src="/img/2019-01-26-powerapps-expense-report/35.png" alt="">
 Зададим действие нажатия на камеру для получения фотографии.
-<img src="/img/2019-01-26-powerapps-expense-report/36.png" alt="" /></p>
-
+<img src="/img/2019-01-26-powerapps-expense-report/36.png" alt=""></p>
 <pre><code>ClearCollect(CameraImages;Camera1.Photo);;
 Clear(Image);;
 ForAll(CameraImages;Collect(Image;{Filename:&quot;img.jpg&quot;;fileBody:Url}));;
 Back()
-</code></pre>
-
-<p>Здесь мне пришлось сначала написать Collect(Image;{Filename:&ldquo;img.jpg&rdquo;;fileBody:Url}) , чтобы создалась переменная Image. Потом уже все расставить в нормальном порядке.
-Переход на экран с камерой у нас будет происходить при нажатии на кнопку
-<img src="/img/2019-01-26-powerapps-expense-report/37.png" alt="" />
+</code></pre><p>Здесь мне пришлось сначала написать Collect(Image;{Filename:&ldquo;img.jpg&rdquo;;fileBody:Url}) , чтобы создалась переменная Image. Потом уже все расставить в нормальном порядке.
+Переход на экран с камерой у нас будет происходить при нажатии на кнопку 
+<img src="/img/2019-01-26-powerapps-expense-report/37.png" alt="">
 Просмотр сделанной фотографии.
-<img src="/img/2019-01-26-powerapps-expense-report/38.png" alt="" />
+<img src="/img/2019-01-26-powerapps-expense-report/38.png" alt="">
 И самое интересное сохранение.
-<img src="/img/2019-01-26-powerapps-expense-report/39.png" alt="" /></p>
-
+<img src="/img/2019-01-26-powerapps-expense-report/39.png" alt=""></p>
 <p>При сохранении создается объект «Примечание», куда пишется описание из соответствующего поля и к нему прикладывается файл с фотографией и именем, состоящим из случайного числа. Примечание связано с Авансовым отчетом.</p>
-
 <pre><code>Patch(Примечания;Defaults(Примечания);{subject:Text(Now(); &quot;[$-ru-RU]dd.mm.yyyy hh:mm&quot;);notetext:txtDescription.Text;_objectid_value:selectedExpense.'Авансовый отчет';_objectid_type:&quot;awr_expensereports&quot;;filename:&quot;img_&quot;&amp; Text(Rand())&amp;&quot;.jpg&quot;;documentbody:If(StartsWith(First(Image).fileBody;&quot;data:image&quot;);Replace(First(Image).fileBody;1; Len(Left(First(Image).fileBody;Find(&quot;,&quot;;First(Image).fileBody)));&quot;&quot;);First(Image).fileBody)});;
 Reset(txtDescription);;
 Clear(Image)
-</code></pre>
-
-<p>Признаюсь, что эту идею я нашел на просторах интернета, <a href="https://www.inogic.com/blog/2018/07/create-attachment-in-crm-with-camera-control-using-canvas-app-in-powerapps/">тут</a>.
+</code></pre><p>Признаюсь, что эту идею я нашел на просторах интернета, <a href="https://www.inogic.com/blog/2018/07/create-attachment-in-crm-with-camera-control-using-canvas-app-in-powerapps/">тут</a>.
 Зададим очистку получившейся фотографии, на случай, если фотография не удалась.
- <img src="/img/2019-01-26-powerapps-expense-report/40.png" alt="" />
+<img src="/img/2019-01-26-powerapps-expense-report/40.png" alt="">
 Список приложенных фотографий отобразим в галерее, заполненной список примечаний.
-<img src="/img/2019-01-26-powerapps-expense-report/41.png" alt="" /></p>
-
+<img src="/img/2019-01-26-powerapps-expense-report/41.png" alt=""></p>
 <pre><code>SortByColumns(Filter(Примечания; _objectid_value=selectedExpense.'Авансовый отчет');&quot;createdon&quot;)
-</code></pre>
-
-<p>Удаление строки выглядит так
-<img src="/img/2019-01-26-powerapps-expense-report/42.png" alt="" /></p>
-
+</code></pre><p>Удаление строки выглядит так
+<img src="/img/2019-01-26-powerapps-expense-report/42.png" alt=""></p>
 <pre><code>Remove(Примечания;galNotes_1.Selected)
-</code></pre>
-
-<p>Форма готова, теперь можно определить кнопку перехода на эту форму.
-<img src="/img/2019-01-26-powerapps-expense-report/43.png" alt="" /></p>
-
+</code></pre><p>Форма готова, теперь можно определить кнопку перехода на эту форму.
+<img src="/img/2019-01-26-powerapps-expense-report/43.png" alt=""></p>
 <pre><code>Navigate(scrnAddAttachment;None;{selectedExpense:galExpenseList.Selected})
-</code></pre>
-
-<h2 id="строки-авансового-отчета">Строки авансового отчета</h2>
-
-<p>&nbsp;&nbsp;Теперь нужно определить функционал добавления строк авансового отчета. Описание того, на что были потрачены деньги.<BR><BR>
-Создаем новый экран и добавляем туда форму добавления строк и галерею (список) для просмотра добавленных строк и их удаления.<BR><BR>
+</code></pre><h2 id="строки-авансового-отчета">Строки авансового отчета</h2>
+<p>  Теперь нужно определить функционал добавления строк авансового отчета. Описание того, на что были потрачены деньги.<!-- raw HTML omitted --><!-- raw HTML omitted -->
+Создаем новый экран и добавляем туда форму добавления строк и галерею (список) для просмотра добавленных строк и их удаления.<!-- raw HTML omitted --><!-- raw HTML omitted -->
 Форма привязана к сущности строк авансового отчета. Не забудьте поменять режим формы по умолчанию на «Создать».
-<img src="/img/2019-01-26-powerapps-expense-report/44.png" alt="" />
+<img src="/img/2019-01-26-powerapps-expense-report/44.png" alt="">
 Чтобы привязывать новый объект с родительским авансовым отчетом, нужно задать значение по умолчанию для поля «Авансовым отчет».
-<img src="/img/2019-01-26-powerapps-expense-report/45.png" alt="" />
+<img src="/img/2019-01-26-powerapps-expense-report/45.png" alt="">
 Так определяется кнопка сохранения
-<img src="/img/2019-01-26-powerapps-expense-report/46.png" alt="" /></p>
-
+<img src="/img/2019-01-26-powerapps-expense-report/46.png" alt=""></p>
 <pre><code>SubmitForm(frmEditExpenseRow);;ResetForm(frmEditExpenseRow)
-</code></pre>
-
-<p>Так сброс
-<img src="/img/2019-01-26-powerapps-expense-report/47.png" alt="" />
+</code></pre><p>Так сброс
+<img src="/img/2019-01-26-powerapps-expense-report/47.png" alt="">
 Определим источник данных для списка строк.
-<img src="/img/2019-01-26-powerapps-expense-report/48.png" alt="" /></p>
-
+<img src="/img/2019-01-26-powerapps-expense-report/48.png" alt=""></p>
 <pre><code>SortByColumns(Filter('Строки авансового отчета'; 'Авансовый отчет'=selectedExpense.awr_expensereportid);&quot;createdon&quot;)
-</code></pre>
-
-<p>Кнопка удаления строк
-<img src="/img/2019-01-26-powerapps-expense-report/49.png" alt="" />
+</code></pre><p>Кнопка удаления строк
+<img src="/img/2019-01-26-powerapps-expense-report/49.png" alt="">
 Кнопка выделения строки заполняет форму данными для редактирования.
-<img src="/img/2019-01-26-powerapps-expense-report/50.png" alt="" /></p>
-
+<img src="/img/2019-01-26-powerapps-expense-report/50.png" alt=""></p>
 <pre><code>Select(Parent);;EditForm(frmEditExpenseRow)
-</code></pre>
-
-<p>Кнопка возврата.
-<img src="/img/2019-01-26-powerapps-expense-report/51.png" alt="" />
+</code></pre><p>Кнопка возврата.
+<img src="/img/2019-01-26-powerapps-expense-report/51.png" alt="">
 Определим кнопку перехода к строкам авансового отчета.
-<img src="/img/2019-01-26-powerapps-expense-report/52.png" alt="" /></p>
-
+<img src="/img/2019-01-26-powerapps-expense-report/52.png" alt=""></p>
 <pre><code>Navigate(scrnExpenseReportRows; ScreenTransition.None;{selectedExpense:selectedExpense})
-</code></pre>
-
-<h2 id="отправка-в-бухгалтерию">Отправка в бухгалтерию</h2>
-
+</code></pre><h2 id="отправка-в-бухгалтерию">Отправка в бухгалтерию</h2>
 <p>Когда отчет заполнен, нужно отправить его в бухгалтерию, нажатием на кнопку.
-<img src="/img/2019-01-26-powerapps-expense-report/53.png" alt="" /></p>
-
+<img src="/img/2019-01-26-powerapps-expense-report/53.png" alt=""></p>
 <pre><code>Patch('Авансовые отчеты';selectedExpense;{'Причина состояния':124000000});;Back()
-</code></pre>
-
-<p>Видимость кнопки зависит от статуса
-<img src="/img/2019-01-26-powerapps-expense-report/54.png" alt="" /></p>
-
+</code></pre><p>Видимость кнопки зависит от статуса
+<img src="/img/2019-01-26-powerapps-expense-report/54.png" alt=""></p>
 <h2 id="итог">Итог</h2>
-
-<p>&nbsp;&nbsp;Итогом всего процесса обычно является документ, в нашем случае его можно сформировать в CRM или в 1С после отработки процесса интеграции. Для работы рассылок из примечаний я создавал компонент на основе <a href="https://mahenderpal.wordpress.com/2014/01/20/sending-email-with-entity-attachment-from-notes/">этого</a> описания.<BR><BR>
-&nbsp;&nbsp;Хочется так же добавить, что я получил удовольствие от построения приложений на PowerApps, потому что этот инструмент позволяет получить функционал в максимально короткие сроки. Вы можете создавать приложения максимально быстро и при это не пускаете конечного пользователя напрямую в SharePoint или CRM, где сотруднику еще нужно разъяснить куда ему можно нажимать, а куда нет. К тому же приложение доступно на мобильных платформах. Кто сталкивался с тем как это долго и дорого создается, тот понимает в чем выгода.</p>
+<p>  Итогом всего процесса обычно является документ, в нашем случае его можно сформировать в CRM или в 1С после отработки процесса интеграции. Для работы рассылок из примечаний я создавал компонент на основе <a href="https://mahenderpal.wordpress.com/2014/01/20/sending-email-with-entity-attachment-from-notes/">этого</a> описания.<!-- raw HTML omitted --><!-- raw HTML omitted -->
+  Хочется так же добавить, что я получил удовольствие от построения приложений на PowerApps, потому что этот инструмент позволяет получить функционал в максимально короткие сроки. Вы можете создавать приложения максимально быстро и при это не пускаете конечного пользователя напрямую в SharePoint или CRM, где сотруднику еще нужно разъяснить куда ему можно нажимать, а куда нет. К тому же приложение доступно на мобильных платформах. Кто сталкивался с тем как это долго и дорого создается, тот понимает в чем выгода.</p>
 
 
                 
@@ -578,8 +450,12 @@ Clear(Image)
                         
                         
                         
-                        <a href="/tags/powerapps" title="PowerApps">
-                            PowerApps
+                        
+                        
+                        
+                        
+                        <a href="/tags/powerapps" title="powerapps">
+                            powerapps
                         </a>
                         
                         

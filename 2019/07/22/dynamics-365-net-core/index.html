@@ -73,7 +73,7 @@
                     </li>
                     
                     <li>
-                        <a href="/categories/it">IT</a>
+                        <a href="/categories/it">it</a>
                     </li>
                     
                     
@@ -143,8 +143,8 @@
                             Dynamics 365
                         </a>
                         
-                        <a class="tag" href="/tags/.net-core" title=".Net Core">
-                            .Net Core
+                        <a class="tag" href="/tags/dot-net-core" title="Dot Net Core">
+                            Dot Net Core
                         </a>
                         
                     </div>
@@ -183,64 +183,42 @@
                     <h2>Оглавление</h2>
                 </header>
                 <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#azure-application-registration">Azure Application Registration</a></li>
-<li><a href="#dynamics-user-permission">Dynamics User Permission</a></li>
-<li><a href="#test-console">Test Console</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#azure-application-registration">Azure Application Registration</a></li>
+    <li><a href="#dynamics-user-permission">Dynamics User Permission</a></li>
+    <li><a href="#test-console">Test Console</a></li>
+  </ul>
 </nav>
                 
-                
-
-<h2 id="azure-application-registration">Azure Application Registration</h2>
-
-<p>&nbsp; &nbsp;There is a big problem when you plan to work with Dynamics 365 from .NET Core SDK. SDK is not compatible with .NET Core. Alternative possibility to work with Dynamics 365 is OData service. Here is detail guide how to set up connection with sample code.<BR/></p>
-
+                <h2 id="azure-application-registration">Azure Application Registration</h2>
+<p>   There is a big problem when you plan to work with Dynamics 365 from .NET Core SDK. SDK is not compatible with .NET Core. Alternative possibility to work with Dynamics 365 is OData service. Here is detail guide how to set up connection with sample code.<!-- raw HTML omitted --></p>
 <p>First you need to register new Application in Azure.
-<img src="/img/2019-07-22-dynamics-365-net-core/1.png" alt="" />
-<img src="/img/2019-07-22-dynamics-365-net-core/2.png" alt="" /></p>
-
+<img src="/img/2019-07-22-dynamics-365-net-core/1.png" alt="">
+<img src="/img/2019-07-22-dynamics-365-net-core/2.png" alt=""></p>
 <p>Then assign Dynamics 365 service access
-<img src="/img/2019-07-22-dynamics-365-net-core/3.png" alt="" />
-<img src="/img/2019-07-22-dynamics-365-net-core/4.png" alt="" /></p>
-
+<img src="/img/2019-07-22-dynamics-365-net-core/3.png" alt="">
+<img src="/img/2019-07-22-dynamics-365-net-core/4.png" alt=""></p>
 <p>Generate access token.
-<img src="/img/2019-07-22-dynamics-365-net-core/5.png" alt="" />
-<img src="/img/2019-07-22-dynamics-365-net-core/6.png" alt="" /></p>
-
+<img src="/img/2019-07-22-dynamics-365-net-core/5.png" alt="">
+<img src="/img/2019-07-22-dynamics-365-net-core/6.png" alt=""></p>
 <p>Don’t forget to copy and save key!</p>
-
 <h2 id="dynamics-user-permission">Dynamics User Permission</h2>
-
-<p>&nbsp; &nbsp;Now you need to create Azure Application delegated user in Dynamics 365. First copy Azure Application ID.
-<img src="/img/2019-07-22-dynamics-365-net-core/7.png" alt="" /></p>
-
+<p>   Now you need to create Azure Application delegated user in Dynamics 365. First copy Azure Application ID.
+<img src="/img/2019-07-22-dynamics-365-net-core/7.png" alt=""></p>
 <p>Now go to the Dynamics 365 application users and Create new one.
-<img src="/img/2019-07-22-dynamics-365-net-core/8.png" alt="" /></p>
-
+<img src="/img/2019-07-22-dynamics-365-net-core/8.png" alt=""></p>
 <p>Change form selector to &ldquo;Application User&rdquo;.
-<img src="/img/2019-07-22-dynamics-365-net-core/9.png" alt="" /></p>
-
+<img src="/img/2019-07-22-dynamics-365-net-core/9.png" alt=""></p>
 <p>Input &ldquo;Application ID&rdquo; and user information
-<img src="/img/2019-07-22-dynamics-365-net-core/10.png" alt="" /></p>
-
+<img src="/img/2019-07-22-dynamics-365-net-core/10.png" alt=""></p>
 <p>Save it and don’t forget to assign roles in CRM
-<img src="/img/2019-07-22-dynamics-365-net-core/11.png" alt="" /></p>
-
+<img src="/img/2019-07-22-dynamics-365-net-core/11.png" alt=""></p>
 <h2 id="test-console">Test Console</h2>
-
-<p>&nbsp; &nbsp;Now is time to test OData connection. Code snipped from <a href="https://github.com/jlattimer/CrmWebApiCSharp">this</a> resource. To authorize in Azure we need authority endpoint.</p>
-
-<p><img src="/img/2019-07-22-dynamics-365-net-core/12.png" alt="" /></p>
-
+<p>   Now is time to test OData connection. Code snipped from <a href="https://github.com/jlattimer/CrmWebApiCSharp">this</a> resource. To authorize in Azure we need authority endpoint.</p>
+<p><img src="/img/2019-07-22-dynamics-365-net-core/12.png" alt=""></p>
 <p>Ready to create .Net Core Sample Console
-<img src="/img/2019-07-22-dynamics-365-net-core/13.png" alt="" /></p>
-
+<img src="/img/2019-07-22-dynamics-365-net-core/13.png" alt=""></p>
 <p>Here is code sample:</p>
-
 <pre><code>using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -369,9 +347,7 @@ namespace D365.REST
         public string access_token { get; set; }
     }
 }
-</code></pre>
-
-<p>Profit!</p>
+</code></pre><p>Profit!</p>
 
 
                 
@@ -396,6 +372,11 @@ namespace D365.REST
                             Предыдущая статья</a>
                     </li>
                     
+                    
+                    <li class="next">
+                        <a href="/2021/01/25/anaplan-authentication/" data-toggle="tooltip" data-placement="top" title="Power Automate Anaplan integration Part 1">Следующая
+                            статья &rarr;</a>
+                    </li>
                     
                 </ul>
 
@@ -445,8 +426,12 @@ namespace D365.REST
                         
                         
                         
-                        <a href="/tags/powerapps" title="PowerApps">
-                            PowerApps
+                        
+                        
+                        
+                        
+                        <a href="/tags/powerapps" title="powerapps">
+                            powerapps
                         </a>
                         
                         
