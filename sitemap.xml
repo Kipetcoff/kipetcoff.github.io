@@ -53,17 +53,17 @@
   </url>
   
   <url>
-    <loc>http://paltusov.pro/tags/.net-core/</loc>
-    <lastmod>2019-07-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://paltusov.pro/tags/dynamics-365/</loc>
-    <lastmod>2019-07-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://paltusov.pro/2019/07/22/dynamics-365-net-core/</loc>
+    <lastmod>2019-07-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://paltusov.pro/tags/dynamics365/</loc>
+    <lastmod>2019-07-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://paltusov.pro/tags/programming/</loc>
     <lastmod>2019-07-22T00:00:00+00:00</lastmod>
   </url>
   
