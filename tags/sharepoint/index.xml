@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SharePoint on Андрей Палтусов</title>
+    <link>http://paltusov.pro/tags/sharepoint/</link>
+    <description>Recent content in SharePoint on Андрей Палтусов</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 02 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://paltusov.pro/tags/sharepoint/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Power Automate Anaplan integration Part 2</title>
+      <link>http://paltusov.pro/2021/02/02/anaplan-sharepoint/</link>
+      <pubDate>Tue, 02 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://paltusov.pro/2021/02/02/anaplan-sharepoint/</guid>
+      <description>Power Automate flow  In this part I will describe file exchange process between Anaplan and SharePoint, built in Microsoft Power Automate. Exporting files from Anaplan consists of several steps:
+ Starting the export task Checking the export task is ready Downloading the file  A full description of API methods can be found here. To export files, you need to know the file export code. To get the list of export files, you should call the API method https://api.</description>
+    </item>
+    
+  </channel>
+</rss>

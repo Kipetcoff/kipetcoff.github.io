@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><head>
+    <meta name="google-site-verification" content="9vIieCe-Qpd78QOmBl63rGtIVbhY6sYyuxX3j8XWBA4" />
+    <meta name="baidu-site-verification" content="LRrmH41lz7" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="description" content="File exchange between Anaplan and SharePoint">
+    
+    <meta name="keyword"  content="Kipetcoff, Dynamics CRM, SharePoint, Dynamics 365, Paltusov, Палтусов">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Power Automate Anaplan integration Part 2-Андрей Палтусов | Andrey Paltusov | Kipetcoff</title>
+
+    <link rel="canonical" href="/2021/02/02/anaplan-sharepoint/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+	
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/docco.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+</head>
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Андрей Палтусов</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Главная</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/it">it</a>
+                    </li>
+                    
+                    
+		    
+                        <li><a href="/top/about/">Обо мне</a></li>
+                    
+                        <li><a href="/top/contacts/">Контакты</a></li>
+                    
+
+                    
+		    <li>
+                        <a href="/search">Поиск <img src="/img/search.png" height="15" style="cursor: pointer;"></a>
+		    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/spb2.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/power-automate" title="Power Automate">
+                            Power Automate
+                        </a>
+                        
+                        <a class="tag" href="/tags/anaplan" title="Anaplan">
+                            Anaplan
+                        </a>
+                        
+                        <a class="tag" href="/tags/sharepoint" title="SharePoint">
+                            SharePoint
+                        </a>
+                        
+                    </div>
+                    <h1>Power Automate Anaplan integration Part 2</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+			Posted by 
+			
+			        &#34;Andrey Paltusov&#34;
+			 
+			on 
+			Tuesday, February 2, 2021
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>Оглавление</h2>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#power-automate-flow">Power Automate flow</a></li>
+  </ul>
+</nav>
+                
+                <h2 id="power-automate-flow">Power Automate flow</h2>
+<p>   In this part I will describe file exchange process between Anaplan and SharePoint, built in Microsoft Power Automate.
+Exporting files from Anaplan consists of several steps:</p>
+<ol>
+<li>Starting the export task</li>
+<li>Checking the export task is ready</li>
+<li>Downloading the file</li>
+</ol>
+<p>A full description of API methods can be found <a href="https://anaplan.docs.apiary.io/#reference/upload-files">here</a>.
+To export files, you need to know the file export code. To get the list of export files, you should call the API method <a href="https://api.anaplan.com/1/3/workspaces/8a8196b15b7dbae6015b8694411d13fe/models/75A40874E6B64FA3AE0743278996850F/exports">https://api.anaplan.com/1/3/workspaces/8a8196b15b7dbae6015b8694411d13fe/models/75A40874E6B64FA3AE0743278996850F/exports</a>. Don’t forget to add the authorization key from the previous article to the header.
+In the current example, I will store export codes and file names in the SharePoint list.</p>
+<p><img src="/img/2021-02-02-anaplan-sharepoint/1.png" alt=""></p>
+<p>Let&rsquo;s continue with the flow I described in the previous <a href="http://paltusov.pro/2021/01/25/anaplan-authentication/">article</a>. At first, we need to initialize several new variables for storing temporary data.</p>
+<p><strong>varAccessStatus</strong> – authentication status</p>
+<p><img src="/img/2021-02-02-anaplan-sharepoint/2.png" alt=""></p>
+<p><strong>varAccessToken</strong> – authentication access token, we will use it in all API methods</p>
+<p><img src="/img/2021-02-02-anaplan-sharepoint/3.png" alt=""></p>
+<p><strong>varExportsList</strong> – export file list from SharePoint</p>
+<p><img src="/img/2021-02-02-anaplan-sharepoint/4.png" alt=""></p>
+<p><strong>varExportStatus</strong> – temporary variable to store export task status</p>
+<p><img src="/img/2021-02-02-anaplan-sharepoint/5.png" alt=""></p>
+<p><strong>varFileName</strong> – temporary variable to store the name of the export file</p>
+<p><img src="/img/2021-02-02-anaplan-sharepoint/6.png" alt=""></p>
+<p>First, let&rsquo;s check the authentication status, if it is successful, then we get a list of files for export.</p>
+<p><img src="/img/2021-02-02-anaplan-sharepoint/7.png" alt=""></p>
+<p>For each export file, we get the values of the work place, model, export code and file name.</p>
+<p><img src="/img/2021-02-02-anaplan-sharepoint/8.png" alt=""></p>
+<p>Then foreach file let’s start export task.</p>
+<p><img src="/img/2021-02-02-anaplan-sharepoint/9.png" alt=""></p>
+<p>Check if task is started</p>
+<p><img src="/img/2021-02-02-anaplan-sharepoint/10.png" alt=""></p>
+<pre><code>
+{
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+        &quot;meta&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;schema&quot;: {
+                    &quot;type&quot;: &quot;string&quot;
+                }
+            }
+        },
+        &quot;status&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;code&quot;: {
+                    &quot;type&quot;: &quot;integer&quot;
+                },
+                &quot;message&quot;: {
+                    &quot;type&quot;: &quot;string&quot;
+                }
+            }
+        },
+        &quot;task&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;taskId&quot;: {
+                    &quot;type&quot;: &quot;string&quot;
+                },
+                &quot;taskState&quot;: {
+                    &quot;type&quot;: &quot;string&quot;
+                },
+                &quot;creationTime&quot;: {
+                    &quot;type&quot;: &quot;integer&quot;
+                }
+            }
+        }
+    }
+}
+
+
+</code></pre><p>Now we need to wait for the export task to complete. I used the DO WHILE construction, in the body of which I check the status of the export task and assign it to the temporary variable <strong>varExportStatus</strong>.</p>
+<p><img src="/img/2021-02-02-anaplan-sharepoint/11.png" alt=""></p>
+<p><img src="/img/2021-02-02-anaplan-sharepoint/12.png" alt=""></p>
+<pre><code>{
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+        &quot;meta&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;schema&quot;: {
+                    &quot;type&quot;: &quot;string&quot;
+                }
+            }
+        },
+        &quot;status&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;code&quot;: {
+                    &quot;type&quot;: &quot;integer&quot;
+                },
+                &quot;message&quot;: {
+                    &quot;type&quot;: &quot;string&quot;
+                }
+            }
+        },
+        &quot;task&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;taskId&quot;: {
+                    &quot;type&quot;: &quot;string&quot;
+                },
+                &quot;currentStep&quot;: {
+                    &quot;type&quot;: &quot;string&quot;
+                },
+                &quot;progress&quot;: {
+                    &quot;type&quot;: &quot;integer&quot;
+                },
+                &quot;result&quot;: {
+                    &quot;type&quot;: &quot;object&quot;,
+                    &quot;properties&quot;: {
+                        &quot;details&quot;: {
+                            &quot;type&quot;: &quot;array&quot;,
+                            &quot;items&quot;: {
+                                &quot;type&quot;: &quot;object&quot;,
+                                &quot;properties&quot;: {
+                                    &quot;occurrences&quot;: {
+                                        &quot;type&quot;: &quot;integer&quot;
+                                    },
+                                    &quot;type&quot;: {
+                                        &quot;type&quot;: &quot;string&quot;
+                                    },
+                                    &quot;values&quot;: {
+                                        &quot;type&quot;: &quot;array&quot;
+                                    }
+                                },
+                                &quot;required&quot;: [
+                                    &quot;occurrences&quot;,
+                                    &quot;type&quot;,
+                                    &quot;values&quot;
+                                ]
+                            }
+                        },
+                        &quot;failureDumpAvailable&quot;: {
+                            &quot;type&quot;: &quot;boolean&quot;
+                        },
+                        &quot;objectId&quot;: {
+                            &quot;type&quot;: &quot;string&quot;
+                        },
+                        &quot;successful&quot;: {
+                            &quot;type&quot;: &quot;boolean&quot;
+                        }
+                    }
+                },
+                &quot;taskState&quot;: {
+                    &quot;type&quot;: &quot;string&quot;
+                },
+                &quot;creationTime&quot;: {
+                    &quot;type&quot;: &quot;integer&quot;
+                }
+            }
+        }
+    }
+}
+
+
+</code></pre><p>After the file export task is complete, you need to get a list of its chunks and export them to SharePoint. Unfortunately, I was unable to get it working with multiple chunks in the case of non-text files. Due to the encoding of the temporary variable for storing pieces of the file, XLSX files were damaged and saved in an incorrect format. In this example my file consists of one chunk.</p>
+<p><img src="/img/2021-02-02-anaplan-sharepoint/13.png" alt=""></p>
+<p><img src="/img/2021-02-02-anaplan-sharepoint/14.png" alt=""></p>
+<pre><code>
+{
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+        &quot;meta&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;paging&quot;: {
+                    &quot;type&quot;: &quot;object&quot;,
+                    &quot;properties&quot;: {
+                        &quot;currentPageSize&quot;: {
+                            &quot;type&quot;: &quot;integer&quot;
+                        },
+                        &quot;offset&quot;: {
+                            &quot;type&quot;: &quot;integer&quot;
+                        },
+                        &quot;totalSize&quot;: {
+                            &quot;type&quot;: &quot;integer&quot;
+                        }
+                    }
+                },
+                &quot;schema&quot;: {
+                    &quot;type&quot;: &quot;string&quot;
+                }
+            }
+        },
+        &quot;status&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;code&quot;: {
+                    &quot;type&quot;: &quot;integer&quot;
+                },
+                &quot;message&quot;: {
+                    &quot;type&quot;: &quot;string&quot;
+                }
+            }
+        },
+        &quot;chunks&quot;: {
+            &quot;type&quot;: &quot;array&quot;,
+            &quot;items&quot;: {
+                &quot;type&quot;: &quot;object&quot;,
+                &quot;properties&quot;: {
+                    &quot;id&quot;: {
+                        &quot;type&quot;: &quot;string&quot;
+                    },
+                    &quot;name&quot;: {
+                        &quot;type&quot;: &quot;string&quot;
+                    }
+                },
+                &quot;required&quot;: [
+                    &quot;id&quot;,
+                    &quot;name&quot;
+                ]
+            }
+        }
+    }
+}
+
+
+</code></pre><p><img src="/img/2021-02-02-anaplan-sharepoint/15.png" alt=""></p>
+<p>At the end of the file transfer cycle, clear the temporary variable with the status of the export task</p>
+<p><img src="/img/2021-02-02-anaplan-sharepoint/16.png" alt=""></p>
+<p>Everything is ready to test the flow. Run the test and check for the file in the SharePoint library.</p>
+<p><img src="/img/2021-02-02-anaplan-sharepoint/17.png" alt=""></p>
+
+
+                
+                
+<div class="entry-shang text-center">
+    
+	    <p>--Андрей Палтусов--</p>
+	
+	
+</div>
+
+
+<script type="text/javascript" src="/js/reward.js"></script>
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2021/01/25/anaplan-authentication/" data-toggle="tooltip" data-placement="top" title="Power Automate Anaplan integration Part 1">&larr;
+                            Предыдущая статья</a>
+                    </li>
+                    
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "paltusovblog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/anaplan" title="anaplan">
+                            anaplan
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/power-automate" title="power-automate">
+                            power-automate
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/powerapps" title="powerapps">
+                            powerapps
+                        </a>
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>ДРУЗЬЯ</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href="https://mvp.microsoft.com/es-es/PublicProfile/5002205">Alexander Ermakov</a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href="" rel="alternate" type="application/rss+xml" title="Андрей Палтусов" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:paltandrey@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    <li>
+                        <a href="https://twitter.com/Kipetcoff">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+
+                    
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/profile.php?id=100002187353226">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/Kipetcoff">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Андрей Палтусов , 2021
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+
+
+
+
+
+</body>
+</html>
