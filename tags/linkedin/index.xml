@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LinkedIn on Андрей Палтусов</title>
+    <link>http://paltusov.pro/tags/linkedin/</link>
+    <description>Recent content in LinkedIn on Андрей Палтусов</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://paltusov.pro/tags/linkedin/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dynamics 365 and LinkedIn Power Automate integration</title>
+      <link>http://paltusov.pro/2021/11/15/D365-linkedin/</link>
+      <pubDate>Mon, 15 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://paltusov.pro/2021/11/15/D365-linkedin/</guid>
+      <description>Intro  There are several LinkedIn tools in Dynamics 365 - LinkedIn Sales Navigator for Dynamics 365 and LinkedIn Lead Gen integration, but these are rather marketing tools that also require additional costs. What if you just need to enrich your contacts with Linked Profile data? Linked has its own API and it would be nice to use it. In the same time, Power Platform has an integration mechanism and it would be good to use it too.</description>
+    </item>
+    
+  </channel>
+</rss>

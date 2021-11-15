@@ -8,14 +8,14 @@
     <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <meta name="description" content="Андрей Палтусов">
+    <meta name="description" content="How to connect Dynamics 365 with LinkedIn by Power Automate">
     
     <meta name="keyword"  content="Kipetcoff, Dynamics CRM, SharePoint, Dynamics 365, Paltusov, Палтусов">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Андрей Палтусов | Andrey Paltusov | Kipetcoff</title>
+    <title>Dynamics 365 and LinkedIn Power Automate integration-Андрей Палтусов | Andrey Paltusov | Kipetcoff</title>
 
-    <link rel="canonical" href="/top/about/">
+    <link rel="canonical" href="/2021/11/15/D365-linkedin/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -126,14 +126,43 @@
 
 
 
-<header class="intro-header" style="background-image: url('/img/karelia1.jpg')">
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/2021-11-05.jpg')
+    }
+</style>
+<header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>Андрей Палтусов </h1>
-                    
-		    <span class="subheading">Учиться, учиться и учиться</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/power-automate" title="Power Automate">
+                            Power Automate
+                        </a>
+                        
+                        <a class="tag" href="/tags/dynamics365" title="Dynamics365">
+                            Dynamics365
+                        </a>
+                        
+                        <a class="tag" href="/tags/linkedin" title="LinkedIn">
+                            LinkedIn
+                        </a>
+                        
+                    </div>
+                    <h1>Dynamics 365 and LinkedIn Power Automate integration</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+			Posted by 
+			
+			        &#34;Andrey Paltusov&#34;
+			 
+			on 
+			Monday, November 15, 2021
+                        
+                    </span>
                 </div>
             </div>
         </div>
@@ -153,46 +182,103 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-         	<p><img src="/img/paltusov-fase.jpg" alt=""></p>
-<h2 id="интересы">Интересы</h2>
-<ul>
-<li>
-<p>Разработка на Microsoft .NET Framework</p>
-</li>
-<li>
-<p>Решения на базе <a href="https://docs.microsoft.com/ru-ru/dynamics365/customer-engagement/">Microsoft Dynamics 365 Customer Engagement</a></p>
-</li>
-<li>
-<p>Решения на базе <a href="https://products.office.com/ru-ru/sharepoint/collaboration">Microsoft SharePoint</a></p>
-</li>
-<li>
-<p>Сервисы Microsoft Azure</p>
-</li>
-</ul>
-<h2 id="образование">Образование</h2>
-<ul>
-<li><a href="http://www.vka.spb.ru/">Военно-космическая академия имени А.Ф. Можайского</a></li>
-</ul>
-<p><img src="/img/MCSA-Web-Applications-2018.png" alt=""><br>
-<img src="/img/MCSD-App-Builder-2018.png" alt=""></p>
-<h2 id="достижения">Достижения</h2>
-<ul>
-<li>
-<p>Внедрение систем документооборота в нескольких организациях на базе SharePoint 2010.</p>
-</li>
-<li>
-<p>Внедрение системы управление заявками на закупку материалов на производстве с применением Microsoft CRM 4.</p>
-</li>
-<li>
-<p>Внедрение системы бюджетирования на базе SharePoint 2010, Microsoft BI, MS SQL Reporting Services и MS SQL Integration Services.</p>
-</li>
-<li>
-<p>Внедрение системы учета профсоюзных взносов на базе Microsoft CRM 2015.</p>
-</li>
-<li>
-<p>Разработка бизнес-приложений на базе ASP.NET, .NET Core, Angular 2+, PowerApps</p>
-</li>
-</ul>
+                
+                <header>
+                    <h2>Оглавление</h2>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#intro">Intro</a></li>
+    <li><a href="#linkedin-application-registration">LinkedIn application registration</a></li>
+    <li><a href="#power-apps-confirmation-receiver">Power Apps confirmation receiver</a></li>
+    <li><a href="#dynamics-365">Dynamics 365</a></li>
+    <li><a href="#authentication-and-linkedin-request">Authentication and LinkedIn request</a></li>
+  </ul>
+</nav>
+                
+                <h2 id="intro">Intro</h2>
+<p>   There are several LinkedIn tools in Dynamics 365 - <a href="https://appsource.microsoft.com/en-us/product/dynamics-365/mscrm.5ba43194-adc5-4c13-b40d-af04f549d5da?tab=overview">LinkedIn Sales Navigator for Dynamics 365</a> and <a href="https://docs.microsoft.com/en-us/dynamics365/marketing/linkedin-lead-gen-integration">LinkedIn Lead Gen integration</a>, but these are rather marketing tools that also require additional costs. What if you just need to enrich your contacts with Linked Profile data? Linked has its own API and it would be nice to use it. In the same time, Power Platform has an <a href="https://powerautomate.microsoft.com/">integration mechanism</a> and it would be good to use it too.
+First of all, let&rsquo;s understand the mechanism for getting data from the <a href="https://docs.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow?context=linkedin%2Fcontext&amp;tabs=HTTPS">API</a>. They are described very well in this <a href="https://www.youtube.com/watch?v=jYflkIo1R4A">video</a>. The data exchange scenario will be as follows:</p>
+<ol>
+<li>The employee inputs a LinkedIn profile link into the D365 contact form</li>
+<li>Letter is sent to the contact with a request to access his profile information.</li>
+<li>The contact opens the link and approves the request.</li>
+<li>Power Automate(PA) receives redirect Url with authorization code and gets Bearer token.</li>
+<li>PA retrieves LinkedIn Url from Dataverse contact entity and makes request to the LinkedIn by <a href="https://docs.microsoft.com/en-us/linkedin/shared/integrations/people/profile-vanity-name-api?context=linkedin/compliance/context">VanityName</a></li>
+<li>PA updates data in Dataverse<!-- raw HTML omitted --></li>
+</ol>
+<h2 id="linkedin-application-registration">LinkedIn application registration</h2>
+<p>   The first thing you need to do is to register the application in LinkedIn and add it the necessary products. Unfortunately, LinkedIn refused to give me permission for retrieving by <a href="https://docs.microsoft.com/en-us/linkedin/shared/integrations/people/profile-vanity-name-api?context=linkedin/compliance/context">VanityName</a>. Details of how to register the application and obtain rights are in this <a href="https://www.youtube.com/watch?v=jYflkIo1R4A">video</a>.</p>
+<p><img src="/img/2021-11-15-D365-linkedin/1.png" alt=""></p>
+<p><img src="/img/2021-11-15-D365-linkedin/2.png" alt=""></p>
+<p>On this step you can leave authorized redirect Url field empty for now.</p>
+<p><img src="/img/2021-11-15-D365-linkedin/3.png" alt=""></p>
+<h2 id="power-apps-confirmation-receiver">Power Apps confirmation receiver</h2>
+<p>   Now we need to create a listener to which requests for linked access will be redirected. In our case the receiver will be the Power Automate http receiver.</p>
+<p><img src="/img/2021-11-15-D365-linkedin/4.png" alt=""></p>
+<p>Copy Url to the LinkedIn “Authorized redirect URLs for your app” field.</p>
+<p><img src="/img/2021-11-15-D365-linkedin/5.png" alt=""></p>
+<h2 id="dynamics-365">Dynamics 365</h2>
+<p>   Now you can create new field on the contact form and configure confirmation message. This message we will send to the contact, to request access to his profile.</p>
+<p><img src="/img/2021-11-15-D365-linkedin/6.png" alt=""></p>
+<p>In the mail message, we will have a <a href="https://docs.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow?context=linkedin%2Fcontext&amp;tabs=HTTPS#step-2-request-an-authorization-code">link</a> with access request to the profile. There you need to add the address of the redirect link in the <strong>redirect_uri</strong> parameter, encoded at <a href="https://www.urlencoder.org/">https://www.urlencoder.org/</a>, and add the contact GUID to the <strong>state</strong> parameter in order to understand from whom exactly the confirmation came, and which contact we will update.
+I got the GUID using this tool <a href="https://github.com/demianrasko/Dynamics-365-Workflow-Tools">https://github.com/demianrasko/Dynamics-365-Workflow-Tools</a></p>
+<p><img src="/img/2021-11-15-D365-linkedin/7.png" alt=""></p>
+<p><img src="/img/2021-11-15-D365-linkedin/8.png" alt=""></p>
+<h2 id="authentication-and-linkedin-request">Authentication and LinkedIn request</h2>
+<p>   Initialization of the variable to store Vanity Name.</p>
+<p><img src="/img/2021-11-15-D365-linkedin/9.png" alt=""></p>
+<p>The next step is LinkedIn authentication.</p>
+<p><img src="/img/2021-11-15-D365-linkedin/10.png" alt=""></p>
+<pre><code>Code = triggerOutputs()['queries']['code']
+</code></pre><p>Check that the authorization was successful and get the authorization token</p>
+<p><img src="/img/2021-11-15-D365-linkedin/11.png" alt=""></p>
+<pre><code>{
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+        &quot;access_token&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;expires_in&quot;: {
+            &quot;type&quot;: &quot;integer&quot;
+        }
+    }
+}
+</code></pre><p>Get contact by Id and link from there, check if it is not empty.</p>
+<p><img src="/img/2021-11-15-D365-linkedin/12.png" alt=""></p>
+<pre><code>State = triggerOutputs()['queries']['state'] – this is the contact GUID that we sent in the message 
+length('varVanityName')
+</code></pre><p>If the value of the field with the link is not empty, then we get VanityName from the Url and execute the request to get data from LinkedIn.</p>
+<p><img src="/img/2021-11-15-D365-linkedin/13.png" alt=""></p>
+<pre><code>split(variables('varVanityName'),'/')[4]
+</code></pre><p>Unfortunately, I could not get the rights for my test application for extended methods like searching by Vanity Name, but process works with test request of my profile data.
+Hope this guide will help to complete data exchange with complete scenario.</p>
+
+
+                
+                
+<div class="entry-shang text-center">
+    
+	    <p>--Андрей Палтусов--</p>
+	
+	
+</div>
+
+
+<script type="text/javascript" src="/js/reward.js"></script>
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2021/02/02/anaplan-sharepoint/" data-toggle="tooltip" data-placement="top" title="Power Automate Anaplan integration Part 2">&larr;
+                            Предыдущая статья</a>
+                    </li>
+                    
+                    
+                </ul>
 
                 
 <div id="disqus-comment"></div>
@@ -237,13 +323,13 @@
                         
                         
                         <a href="/tags/anaplan" title="anaplan">
-                        anaplan
+                            anaplan
                         </a>
                         
                         
                         
                         <a href="/tags/dynamics365" title="dynamics365">
-                        dynamics365
+                            dynamics365
                         </a>
                         
                         
@@ -251,13 +337,13 @@
                         
                         
                         <a href="/tags/power-automate" title="power-automate">
-                        power-automate
+                            power-automate
                         </a>
                         
                         
                         
                         <a href="/tags/powerapps" title="powerapps">
-                        powerapps
+                            powerapps
                         </a>
                         
                         
@@ -355,7 +441,7 @@
                     
                 </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; Андрей Палтусов , 0001
+                    Copyright &copy; Андрей Палтусов , 2021
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
                     <iframe
