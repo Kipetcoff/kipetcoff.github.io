@@ -6,7 +6,17 @@
     <description>Recent content on Андрей Палтусов</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://paltusov.pro/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 14 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://paltusov.pro/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Публикация приложений .NET Core в Яндекс.Облако</title>
+      <link>http://paltusov.pro/2022/04/14/yandex-docker-core/</link>
+      <pubDate>Thu, 14 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://paltusov.pro/2022/04/14/yandex-docker-core/</guid>
+      <description>Проблема  В связи с последними событиями, которые нельзя называть своим именем, возникла необходимость переноса некоторых решений из Azure в Яндекс облако.
+ Одним из самых востребованных потенциальных сценариев пока является использование .NET Core в облаке Яндекс. К сожалению, у Яндекса нет веб-приложений как отдельного сервиса, поэтому пришлось попутно вникнуть в Docker. Об этом есть достаточно подробная статья от самого Яндекс и я решил пройти этот путь сначала самостоятельно, без использования Visual Studio (VS), а потом с использованием стандартных механизмов публикации, встроенного в среду разработки.</description>
+    </item>
+    
     <item>
       <title>Dynamics 365 and LinkedIn Power Automate integration</title>
       <link>http://paltusov.pro/2021/11/15/D365-linkedin/</link>
