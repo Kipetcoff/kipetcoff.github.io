@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><head>
+    <meta name="google-site-verification" content="9vIieCe-Qpd78QOmBl63rGtIVbhY6sYyuxX3j8XWBA4" />
+    <meta name="baidu-site-verification" content="LRrmH41lz7" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="description" content="How to migrate Dataverse using DataMigrationUtility">
+    
+    <meta name="keyword"  content="Kipetcoff, Dynamics CRM, SharePoint, Dynamics 365, Paltusov">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Dynamics 365 Dataverse migration-Andrey Paltusov | Kipetcoff</title>
+
+    <link rel="canonical" href="/2023/01/03/D365-migration/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+	
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/docco.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+</head>
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Andrey Paltusov</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Main</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/it">it</a>
+                    </li>
+                    
+                    
+		    
+                        <li><a href="/top/about/">About me</a></li>
+                    
+                        <li><a href="/top/contacts/">Contacts</a></li>
+                    
+
+                    
+		    <li>
+                        <a href="/search">Search <img src="/img/search.png" height="15" style="cursor: pointer;"></a>
+		    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/2023-01-03.png')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/dynamics365" title="Dynamics365">
+                            Dynamics365
+                        </a>
+                        
+                    </div>
+                    <h1>Dynamics 365 Dataverse migration</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+			Posted by 
+			
+			        &#34;Andrey Paltusov&#34;
+			 
+			on 
+			Tuesday, January 3, 2023
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>Contents</h2>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#process-description">Process description</a></li>
+    <li><a href="#data-backup">Data backup</a></li>
+    <li><a href="#environment-preparation">Environment preparation</a></li>
+    <li><a href="#solution-migration">Solution migration</a>
+      <ul>
+        <li><a href="#basic-solutions-import">Basic solutions import</a></li>
+        <li><a href="#import-of-custom-solutions">Import of custom solutions</a></li>
+      </ul>
+    </li>
+    <li><a href="#disable-plugins-and-workflows">Disable plugins and workflows</a>
+      <ul>
+        <li><a href="#plugin-disabling">Plugin disabling</a></li>
+        <li><a href="#workflow-disabling">Workflow disabling</a></li>
+      </ul>
+    </li>
+    <li><a href="#data-import">Data import</a>
+      <ul>
+        <li><a href="#money-data-delimiter-issue">Money data delimiter issue</a></li>
+        <li><a href="#currency-codes-fixing">Currency codes fixing</a></li>
+        <li><a href="#change-business-process-flows-priority">Change business process flows priority</a></li>
+        <li><a href="#data-import-1">Data import</a></li>
+      </ul>
+    </li>
+    <li><a href="#turning-on-plugins-and-workflows">Turning on plugins and workflows</a></li>
+    <li><a href="#sharepoint-document-locations-configuration">SharePoint document locations configuration</a></li>
+    <li><a href="#email-template-migration">Email template migration</a></li>
+  </ul>
+</nav>
+                
+                <h2 id="introduction">Introduction</h2>
+<p>   In this article I will describe process of migration Dataverse database from one tenant to another. You can do this in several ways:</p>
+<ol>
+<li>By support ticket in <a href="https://learn.microsoft.com/en-us/power-platform/admin/move-environment-tenant?tabs=image">Microsoft</a></li>
+<li>With the <a href="https://learn.microsoft.com/en-us/power-platform/admin/manage-configuration-data">DataMigrationUtility</a>
+In this article I will describe the second approach and the difficulties which are related with this process.</li>
+</ol>
+<h2 id="process-description">Process description</h2>
+<p>Migration process consists of several stages:</p>
+<ol>
+<li>Source Dataverse backup.</li>
+<li>New environment configuration</li>
+<li>Solution migration</li>
+<li>Data migration</li>
+</ol>
+<h2 id="data-backup">Data backup</h2>
+<p>Use <a href="https://learn.microsoft.com/en-us/power-platform/admin/manage-configuration-data">DataMigrationUtility</a> from <a href="https://learn.microsoft.com/en-us/power-apps/developer/data-platform/download-tools-nuget">SDK</a> for data backup. I used version from 2021 year, because there is no user mapping template in the import process in last version of utility.
+First of all, you need to export data scheme from source database. Don’t select all entities in the list, because it could take too much time for export and import and will be too complicated to resolve all issues in data migration. My process took 4 hours for export and 24 hours for data import. 
+Don’t forget about sharepointlocations if you have SharePoint integration in the system. SharePoint migration is another big issue and we won&rsquo;t cover it in this article.</p>
+<p><img src="/img/2023-01-03-D365-migration/1.png" alt=""></p>
+<p>In the second stage, export the data using schema from the previous stage.</p>
+<p><img src="/img/2023-01-03-D365-migration/2.png" alt="">
+<img src="/img/2023-01-03-D365-migration/3.png" alt=""></p>
+<p>All errors you can find in the <a href="https://learn.microsoft.com/en-us/power-platform/admin/manage-configuration-data#troubleshoot-configuration-data-migration-issues-using-log-files">log files</a>.</p>
+<h2 id="environment-preparation">Environment preparation</h2>
+<p>It is important to have the same licenses in the target tenant. When it is done, create new environment with the same base currency and language as the source environment. Turn on and configure SharePoint integration if you have it.
+If you have sandboxes, create their copies too.</p>
+<h2 id="solution-migration">Solution migration</h2>
+<p>Now it is time to migrate solutions. If you have sandboxes first of all you need to migrate unmanaged solutions there and then migrate managed solutions from new sandbox to the new production environment.</p>
+<h3 id="basic-solutions-import">Basic solutions import</h3>
+<p>Since your environment may depend on some third-party solutions, you first need to import them, for example PluginProfiler.Solution or woodford. It is important to find exactly the versions that you have installed in the source environment. <!-- raw HTML omitted --><strong>After each import of the solution, don’t forget to publish the changes!</strong><!-- raw HTML omitted --></p>
+<h3 id="import-of-custom-solutions">Import of custom solutions</h3>
+<p><!-- raw HTML omitted --><strong>IMPORTANT!</strong><!-- raw HTML omitted -->  Each type of environment has its own type of solutions - for the production Managed, for the test Unmanaged.
+In my case I had error with dependencies from msdyn_VivaSalesCore. To fix it I unzipped solution, removed dependent section and zipped it back.</p>
+<p><img src="/img/2023-01-03-D365-migration/4.png" alt=""></p>
+<h2 id="disable-plugins-and-workflows">Disable plugins and workflows</h2>
+<p>In my case I had problems with accounts addresses processing, so I disabled several plugins.</p>
+<h3 id="plugin-disabling">Plugin disabling</h3>
+<p>Use PluginRegistration tool to disable plugins steps.</p>
+<p>Disable Microsoft.Dynamics.FieldService account steps:</p>
+<p><img src="/img/2023-01-03-D365-migration/5.png" alt=""></p>
+<p><strong>Create (pre-operation) for account</strong></p>
+<p><img src="/img/2023-01-03-D365-migration/6.png" alt=""></p>
+<p><strong>Update (pre-operation) for account</strong></p>
+<p><img src="/img/2023-01-03-D365-migration/7.png" alt=""></p>
+<h3 id="workflow-disabling">Workflow disabling</h3>
+<p>Check whether you have workflows which you need to disable during import process.</p>
+<h2 id="data-import">Data import</h2>
+<p>In order to avoid errors when importing backup data, you must first correct some data in the backup archive data.zip, made by the DataMigrationUtility utility.</p>
+<p>Removing the parent_contactid attribute.
+In my case I had problems with parent_contactid when I tried to import data. To fix this issue you need to unzip data.zip file, remove parent_contactid field from data_schema.xml and zip it back to archive.</p>
+<pre><code>&lt;field displayname=&quot;Parent Contact (Manager)&quot; name=&quot;parent_contactid&quot; type=&quot;entityreference&quot; lookupType=&quot;contact&quot; customfield=&quot;true&quot; /&gt;
+</code></pre><p><img src="/img/2023-01-03-D365-migration/8.png" alt=""></p>
+<h3 id="money-data-delimiter-issue">Money data delimiter issue</h3>
+<p>During the testing, it turned out that some data is incorrectly recognized in terms of delimiters. To fix this problem, a special tool was written to correct the delimiters.</p>
+<p><a href="/files/FixCrmXmlFile.zip">FixCrmXmlFile</a></p>
+<p>Execution commend example</p>
+<pre><code>FixCrmXmlFile.exe --zipfilename data.zip
+</code></pre><p>data.zip – data file path.
+At the end tool will create another archive with fixed delimiters data-fixed-2022-09-13-22-18.zip.</p>
+<h3 id="currency-codes-fixing">Currency codes fixing</h3>
+<p>If the currencies in the new environment were not created during the import process, then their code will be different from the currency codes in the original environment. In order for all data to be connected to the correct currencies, it is necessary to see in the data.xml file what currency identifiers were in the old environment. Check for the</p>
+<pre><code>&lt;entity name=&quot;transactioncurrency&quot; displayname=&quot;Currency&quot;&gt; 
+</code></pre><p>element, write down the old identifiers
+<img src="/img/2023-01-03-D365-migration/9.png" alt="">
+Check new identifiers in target environments.</p>
+<p><img src="/img/2023-01-03-D365-migration/10.png" alt="">
+<img src="/img/2023-01-03-D365-migration/11.png" alt=""></p>
+<p>Replace old identifies in data.xml file</p>
+<p><img src="/img/2023-01-03-D365-migration/12.png" alt=""></p>
+<h3 id="change-business-process-flows-priority">Change business process flows priority</h3>
+<p>If you have custom business process flows, you need to change their priority to set them up as default process.</p>
+<p><img src="/img/2023-01-03-D365-migration/13.png" alt="">
+<img src="/img/2023-01-03-D365-migration/14.png" alt=""></p>
+<h3 id="data-import-1">Data import</h3>
+<p>Now you can start DataMigrationUtility.exe to import the data.</p>
+<p><img src="/img/2023-01-03-D365-migration/15.png" alt="">
+<img src="/img/2023-01-03-D365-migration/16.png" alt=""></p>
+<p>Fill in the user mapping file and use it later during data import.</p>
+<p><img src="/img/2023-01-03-D365-migration/17.png" alt=""></p>
+<h2 id="turning-on-plugins-and-workflows">Turning on plugins and workflows</h2>
+<p>Enable disabled plugins and workflows. Change worfkflow senders and enable them.</p>
+<h2 id="sharepoint-document-locations-configuration">SharePoint document locations configuration</h2>
+<p>Set up entity parent sites in the list of document locations.</p>
+<p><img src="/img/2023-01-03-D365-migration/18.png" alt="">
+<img src="/img/2023-01-03-D365-migration/19.png" alt="">
+<img src="/img/2023-01-03-D365-migration/20.png" alt=""></p>
+<h2 id="email-template-migration">Email template migration</h2>
+<p>I used XrmToolbox to migrate templates.
+First, we connect to the current CRM system as template sources 
+<img src="/img/2023-01-03-D365-migration/21.png" alt="">
+<img src="/img/2023-01-03-D365-migration/22.png" alt="">
+<img src="/img/2023-01-03-D365-migration/23.png" alt="">
+<img src="/img/2023-01-03-D365-migration/24.png" alt="">
+<img src="/img/2023-01-03-D365-migration/25.png" alt="">
+<img src="/img/2023-01-03-D365-migration/26.png" alt="">
+<img src="/img/2023-01-03-D365-migration/27.png" alt=""></p>
+<p>Then we connect to the target environment, select all the templates and transfer them.</p>
+<p><img src="/img/2023-01-03-D365-migration/28.png" alt=""></p>
+<p>As you can see, the migration process can be very complicated, even with the tools recommended by Microsoft for this purpose.</p>
+
+
+                
+                
+<div class="entry-shang text-center">
+    
+	    <p>--Andrey Paltusov--</p>
+	
+	
+</div>
+
+
+<script type="text/javascript" src="/js/reward.js"></script>
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2022/04/14/yandex-docker-core/" data-toggle="tooltip" data-placement="top" title="Публикация приложений .NET Core в Яндекс.Облако">&larr;
+                            Previous Article</a>
+                    </li>
+                    
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "paltusovblog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        <a href="/tags/anaplan" title="anaplan">
+                            anaplan
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/dynamics365" title="dynamics365">
+                            dynamics365
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/power-automate" title="power-automate">
+                            power-automate
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/powerapps" title="powerapps">
+                            powerapps
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/programming" title="programming">
+                            programming
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href="https://mvp.microsoft.com/es-es/PublicProfile/5002205">Alexander Ermakov</a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href="" rel="alternate" type="application/rss+xml" title="Andrey Paltusov" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:paltandrey@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    <li>
+                        <a href="https://twitter.com/Kipetcoff">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+
+                    
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/profile.php?id=100002187353226">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/Kipetcoff">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Andrey Paltusov , 2023
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

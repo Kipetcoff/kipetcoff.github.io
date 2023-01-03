@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Андрей Палтусов</title>
+    <title>Posts on Andrey Paltusov</title>
     <link>http://paltusov.pro/post/</link>
-    <description>Recent content in Posts on Андрей Палтусов</description>
+    <description>Recent content in Posts on Andrey Paltusov</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://paltusov.pro/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 03 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://paltusov.pro/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dynamics 365 Dataverse migration</title>
+      <link>http://paltusov.pro/2023/01/03/D365-migration/</link>
+      <pubDate>Tue, 03 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://paltusov.pro/2023/01/03/D365-migration/</guid>
+      <description>Introduction  In this article I will describe process of migration Dataverse database from one tenant to another. You can do this in several ways:
+ By support ticket in Microsoft With the DataMigrationUtility In this article I will describe the second approach and the difficulties which are related with this process.  Process description Migration process consists of several stages:
+ Source Dataverse backup. New environment configuration Solution migration Data migration  Data backup Use DataMigrationUtility from SDK for data backup.</description>
+    </item>
+    
     <item>
       <title>Публикация приложений .NET Core в Яндекс.Облако</title>
       <link>http://paltusov.pro/2022/04/14/yandex-docker-core/</link>

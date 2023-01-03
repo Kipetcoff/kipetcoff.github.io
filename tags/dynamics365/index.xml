@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Dynamics365 on Андрей Палтусов</title>
+    <title>Dynamics365 on Andrey Paltusov</title>
     <link>http://paltusov.pro/tags/dynamics365/</link>
-    <description>Recent content in Dynamics365 on Андрей Палтусов</description>
+    <description>Recent content in Dynamics365 on Andrey Paltusov</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://paltusov.pro/tags/dynamics365/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 03 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://paltusov.pro/tags/dynamics365/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dynamics 365 Dataverse migration</title>
+      <link>http://paltusov.pro/2023/01/03/D365-migration/</link>
+      <pubDate>Tue, 03 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://paltusov.pro/2023/01/03/D365-migration/</guid>
+      <description>Introduction  In this article I will describe process of migration Dataverse database from one tenant to another. You can do this in several ways:
+ By support ticket in Microsoft With the DataMigrationUtility In this article I will describe the second approach and the difficulties which are related with this process.  Process description Migration process consists of several stages:
+ Source Dataverse backup. New environment configuration Solution migration Data migration  Data backup Use DataMigrationUtility from SDK for data backup.</description>
+    </item>
+    
     <item>
       <title>Dynamics 365 and LinkedIn Power Automate integration</title>
       <link>http://paltusov.pro/2021/11/15/D365-linkedin/</link>

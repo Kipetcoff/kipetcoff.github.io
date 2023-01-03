@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Андрей Палтусов</title>
+    <title>Tags on Andrey Paltusov</title>
     <link>http://paltusov.pro/tags/</link>
-    <description>Recent content in Tags on Андрей Палтусов</description>
+    <description>Recent content in Tags on Andrey Paltusov</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://paltusov.pro/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 03 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://paltusov.pro/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dynamics365</title>
+      <link>http://paltusov.pro/tags/dynamics365/</link>
+      <pubDate>Tue, 03 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://paltusov.pro/tags/dynamics365/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Programming</title>
       <link>http://paltusov.pro/tags/programming/</link>
@@ -22,15 +31,6 @@
       <pubDate>Thu, 14 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>http://paltusov.pro/tags/yandex/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Dynamics365</title>
-      <link>http://paltusov.pro/tags/dynamics365/</link>
-      <pubDate>Mon, 15 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://paltusov.pro/tags/dynamics365/</guid>
       <description></description>
     </item>
     

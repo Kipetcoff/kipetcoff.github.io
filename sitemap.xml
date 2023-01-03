@@ -3,18 +3,38 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://paltusov.pro/</loc>
+    <lastmod>2023-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://paltusov.pro/categories/</loc>
-    <lastmod>2022-04-14T00:00:00+00:00</lastmod>
+    <lastmod>2023-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://paltusov.pro/2023/01/03/D365-migration/</loc>
+    <lastmod>2023-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://paltusov.pro/tags/dynamics365/</loc>
+    <lastmod>2023-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://paltusov.pro/categories/it/</loc>
-    <lastmod>2022-04-14T00:00:00+00:00</lastmod>
+    <lastmod>2023-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://paltusov.pro/post/</loc>
-    <lastmod>2022-04-14T00:00:00+00:00</lastmod>
+    <lastmod>2023-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://paltusov.pro/tags/</loc>
+    <lastmod>2023-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -23,17 +43,7 @@
   </url>
   
   <url>
-    <loc>http://paltusov.pro/tags/</loc>
-    <lastmod>2022-04-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://paltusov.pro/tags/yandex/</loc>
-    <lastmod>2022-04-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://paltusov.pro/</loc>
     <lastmod>2022-04-14T00:00:00+00:00</lastmod>
   </url>
   
@@ -44,11 +54,6 @@
   
   <url>
     <loc>http://paltusov.pro/2021/11/15/D365-linkedin/</loc>
-    <lastmod>2021-11-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://paltusov.pro/tags/dynamics365/</loc>
     <lastmod>2021-11-15T00:00:00+00:00</lastmod>
   </url>
   

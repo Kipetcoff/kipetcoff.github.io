@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Андрей Палтусов</title>
+    <title>Andrey Paltusov</title>
     <link>http://paltusov.pro/</link>
-    <description>Recent content on Андрей Палтусов</description>
+    <description>Recent content on Andrey Paltusov</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://paltusov.pro/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 03 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://paltusov.pro/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dynamics 365 Dataverse migration</title>
+      <link>http://paltusov.pro/2023/01/03/D365-migration/</link>
+      <pubDate>Tue, 03 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://paltusov.pro/2023/01/03/D365-migration/</guid>
+      <description>Introduction  In this article I will describe process of migration Dataverse database from one tenant to another. You can do this in several ways:
+ By support ticket in Microsoft With the DataMigrationUtility In this article I will describe the second approach and the difficulties which are related with this process.  Process description Migration process consists of several stages:
+ Source Dataverse backup. New environment configuration Solution migration Data migration  Data backup Use DataMigrationUtility from SDK for data backup.</description>
+    </item>
+    
     <item>
       <title>Публикация приложений .NET Core в Яндекс.Облако</title>
       <link>http://paltusov.pro/2022/04/14/yandex-docker-core/</link>
@@ -106,13 +117,11 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://paltusov.pro/top/about/</guid>
-      <description>Интересы   Разработка на Microsoft .NET Framework
-  Решения на базе Microsoft Dynamics 365 Customer Engagement
-  Решения на базе Microsoft SharePoint
-  Сервисы Microsoft Azure
-  Образование  Военно-космическая академия имени А.Ф. Можайского  Достижения   Внедрение систем документооборота в нескольких организациях на базе SharePoint 2010.
-  Внедрение системы управление заявками на закупку материалов на производстве с применением Microsoft CRM 4.
-  Внедрение системы бюджетирования на базе SharePoint 2010, Microsoft BI, MS SQL Reporting Services и MS SQL Integration Services.</description>
+      <description>Interests   Microsoft .NET Framework development
+  Dynamics 365 development Microsoft Dynamics 365 Customer Engagement
+  SharePoint development Microsoft SharePoint
+  Microsoft Azure services
+  Education  Military Space Academy  </description>
     </item>
     
     <item>
@@ -121,7 +130,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://paltusov.pro/top/contacts/</guid>
-      <description>Контакты  paltandrey@gmail.com +7 (911) 284-79-35 @Kipetcoff Компания AWARA-IT, наб.реки Мойки 37А, Санкт-Петербург, Российская Федерация  </description>
+      <description>Contacts  paltandrey@gmail.com +7 (911) 284-79-35 @Kipetcoff AWARA-IT, Kazakhstan, Almaty, Yassaui street, 189  </description>
     </item>
     
   </channel>
