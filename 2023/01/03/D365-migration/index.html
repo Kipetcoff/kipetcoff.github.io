@@ -265,8 +265,8 @@ In my case I had problems with parent_contactid when I tried to import data. To 
 </code></pre><p><img src="/img/2023-01-03-D365-migration/8.png" alt=""></p>
 <h3 id="money-data-delimiter-issue">Money data delimiter issue</h3>
 <p>During the testing, it turned out that some data is incorrectly recognized in terms of delimiters. To fix this problem, a special tool was written to correct the delimiters.</p>
-<p><a href="/files/FixCrmXmlFile.zip">FixCrmXmlFile</a></p>
-<p>Execution commend example</p>
+<p><a href="https://github.com/DmitriyVlasov/FixCrmXmlFile">FixCrmXmlFile</a></p>
+<p>Execution commаnd example</p>
 <pre><code>FixCrmXmlFile.exe --zipfilename data.zip
 </code></pre><p>data.zip – data file path.
 At the end tool will create another archive with fixed delimiters data-fixed-2022-09-13-22-18.zip.</p>
